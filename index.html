@@ -6,18 +6,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
     <meta name="format-detection" content="telephone=no"/>
     <link rel="stylesheet" href="css/common.css">
-    <link rel="icon" href="imgs/uncle.jpg">
+    <link rel="icon" href="images/uncle.jpg">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <style>
-      .main {
-        transform: translateX(0);
-        transition: all 0.4s;
-      }
+      
       .page_header{
         width:100%;
         height:70vh;
         position: relative;
-        background:url('imgs/page_background.jpg') no-repeat 5% 60%;
+        background:url('images/page_background.jpg') no-repeat 5% 60%;
       }
       .navi-button {
           font-size: .8rem;
@@ -61,98 +58,142 @@
         transform: translateY(-20px);
         transition: all 0.8s;
       }
-      .main-navication {
-          margin: 0;
-          padding: 100px 0 0;
-          background: #2c3e50;
-          width: 150px;
-          position: absolute;
-          right: 0;
-          top: 0;
-          bottom: 0;
-          z-index:-1;
-      }
-      ul {
-          display: block;
-          list-style-type: disc;
-          margin-block-start: 1em;
-          margin-block-end: 1em;
-          margin-inline-start: 0px;
-          margin-inline-end: 0px;
-          padding-inline-start: 40px;
-      }
-      .main-navication a {
-          display: block;
-          padding: 0 15px;
-          color: white;
-          text-decoration: none;
-      }
-      .main-navication span {
-          font-size: 12px;
-          line-height: 48px;
-          display: block;
-          opacity: 0;
-          transform: translateX(-50px);
-          transition: all 0.4s;
-      }
+      
+      
       .pagination {
           margin-bottom: 80px;
           padding-left: 0;
       }
-      .footer {
-          background: #2c3e50;
-          padding: 50px 15px;
+      
+      body {
+        background: #2c3e50;
+      }
+      .main_content {
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.8s;
+        margin: 72px auto 0 auto;
+        padding: 0 36px;
+        list-style: none;
+      }
+      .main_content>li {
+        margin-bottom: 80px;
+        h4.title {
+            font-weight: bold;
+        }
+      }
+      .main {
+        width:100%;
+        background:#ffffff;
+      }
+      .main_content>li p.date, .main_content>li h4.title {
+          font-weight: bold;
+      }
+      .main_content>li h4.title {
+          line-height: 1.5;
+          margin: 10px 0;
+      }
+      .main_content>li h4.title a {
+          color: #2c3e50;
+          transition: color .3s;
+      }
+      a {
+          text-decoration: none;
+          color: #34495e;
+      }
+      .main_content>li .excerpt, .main_content>li .excerpt *, .main_content>li .no-title {
+          font-size: .9rem;
+          color: #7f8c8d;
+          line-height: 1.5;
+          margin: 0;
+      }
+      .main_content>li .meta {
+          margin-top: 20px;
+          border: 1px solid #ecf0f1;
+          border-width: 1px 0;
+          padding: 22px 10px;
+          font-size: .75rem;
+          color: #7f8c8d;
+      }
+      .main_content>li .meta>li {
+          margin-right: 22px;
+          display: inline-block;
       }
     </style>
   </head>
   <body>
-    <ul class="main-navication">
-      <li>
-        <a href="/"><span>Home</span></a>
-      </li>
-      <li>
-        <a href="https://github.com"><span>Github</span></a>
-      </li>
-      <li>
-        <a href="https://www.v2ex.com/"><span>V2EX</span></a>
-      </li>
-    </ul>
-    
+    <div  class="main-navication">
+      <ul>
+        <li>
+          <a href="/"><span>首页</span></a>
+        </li>
+        <li>
+          <a href="study/web/"><span>Web技术</span></a>
+        </li>
+        <li>
+          <a href="study/college/"><span>大学学习</span></a>
+        </li>
+        <li>
+          <a href="study/rm/"><span>RM比赛</span></a>
+        </li>
+        <li>
+          <a href="markdown.html" target="_blank"><span>Markdown</span></a>
+        </li>
+      </ul>
+    </div>
     <div class="main">
       <div class="page_header" >
         <label class="navi-button">MENU</label>
       </div>
       <div class="author">
         <div class="head">
-          <img src="imgs/uncle.jpg" class="img-responsive img-circle">
+          <img src="images/uncle.jpg" class="img-responsive img-circle">
         </div>
         <h3 class="name">大叔的小站</h3>
         <p class="name">往事随他去，人间不值得</p>
       </div>
       
-      <div class="content">
-        
-      </div>
-      
-      <center>
-        <ul class="pagination">
-          <li class="active">
-            <span>1 <span class="sr-only">(current)</span></span>
+      <div class="container" style="">
+        <ul class="main_content">
+          <li>
+            <p class="date">January 7, 2018</p>
+            <h4 class="title"><a href="study/college/?content=semiconductor">半导体物理复习</a></h4>
+            <div class="excerpt">
+              <p>半导体物理与器件-复习<p>
+              <p>大三上</p>
+            </div>
+            <ul class="meta">
+              <li>big_uncle</li>
+              <li><a href="study/college/">大学学习</a></li>
+            </ul>
+          </li>
+          <li>
+            <p class="date">November 28, 2016</p>
+            <h4 class="title"><a href="#">React + Typescript + Webpack 开发环境配置教程</a></h4>
+            <div class="excerpt">
+              <p>对于复杂或多人开发的 <code>React</code> 项目来说，管理和使用每个组件的 <code>props</code> 、 <code>state</code> 或许会成为一件让人头痛的事情，而为每一个组件写文档，成本也会比较大，对项目的开发效率也不是最理想的。</p>
+              <p><code>Typescript</code> 给 <code>React</code> 带来很多好处：</p>
+              <ul>
+                <li>在组件头部定义 <code>interface</code>，让每个人在拿到组件的第一时间就可以很明确知道该组件需要使用的 <code>props</code> 和 <code>state</code>；</li>
+                <li>在编译中发现问题，减少运行时的报错；</li>
+                <li>可以在编辑器中实现实时类型校验、引用查询；</li>
+                <li>约束类型，在混合多语言环境中降低风险，等。</li>
+              </ul>
+              <p>且配置也是非常简单，步骤如下。<br></p>
+            </div>
+            <ul class="meta">
+              <li>Heleth</li>
+              <li>18 Minutes</li>
+            </ul>
           </li>
         </ul>
-      </center>
+      </div>
+      <div class="footer">
+        <center><a href="https://github.com/imuncle" title="Github" target="_blank"><img src="images/github.svg" style="width:50px"></center>
+      </div>      
     </div>
-    
 
-    <div class="footer">
-      <ul class="social">
-        <li>
-          <a href="https://github.com/BoizZ" title="Github" target="_blank">
-          <i class="icon icon-github"></i></a>
-        </li>
-      </ul>
-      <center><a href="https://github.com/imuncle" title="Github" target="_blank"><img src="imgs/github.svg" style="width:50px"></center>
-    </div>
+    
 
   </body>
   <script src = "js/jquery.min.js"></script>
@@ -163,19 +204,9 @@
       $('.head').css("transform","translateY(0)");
       $('.name').css("opacity","1");
       $('.name').css("transform","translateY(0)");
-    });
-    $('.navi-button').click(function(){
-      if($('.main').css("transform") == "matrix(1, 0, 0, 1, 0, 0)")
-      {
-        $('.main').css("transform","translateX(-150px)");
-        $('.main-navication span').css("opacity","1");
-        $('.main-navication span').css("transform","translateX(0)");
-      }else {
-        $('.main').css("transform","translateX(0)");
-        $('.main-navication span').css("opacity","0");
-        $('.main-navication span').css("transform","translateX(-50px)");
-      }
-      
+      $('.main_content').css("opacity","1");
+      $('.main_content').css("transform","translateY(0)");
     });
   </script>
+  <script src = "js/menu.js"></script>
 </html>
