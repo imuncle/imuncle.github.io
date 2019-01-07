@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>大叔的个人小站</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="icon" href="imgs/uncle.jpg">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+      .main {
+        transform: translateX(0);
+        transition: all 0.4s;
+      }
+      .page_header{
+        width:100%;
+        height:70vh;
+        position: relative;
+        background:url('imgs/page_background.jpg') no-repeat 5% 60%;
+      }
+      .navi-button {
+          font-size: .8rem;
+          color: #7f8c8d;
+          border: 1px solid rgba(127,140,141,0.6);
+          line-height: 35px;
+          border-radius: 4px;
+          display: block;
+          padding: 0 15px;
+          position: absolute;
+          right: 15px;
+          top: 15px;
+          cursor: pointer;
+          text-transform: uppercase;
+          z-index: 99;
+          transition: all .3s;
+      }
+      .author {
+          background: #ecf0f1;
+          text-align: center;
+          height:30vh;
+      }
+      .head {
+          display: inline-block;
+          width: 130px;
+          height: 130px;
+          border-radius: 50%;
+          padding: 3px;
+          background: #fff;
+          box-shadow: 0 0 5px #95a5a6;
+          position: relative;
+          top: -68px;
+          opacity: 0;
+          transform: translateY(-20px);
+          transition: all 0.8s;
+      }
+      .name {
+        top: -68px;
+        position: relative;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.8s;
+      }
+      .main-navication {
+          margin: 0;
+          padding: 100px 0 0;
+          background: #2c3e50;
+          width: 150px;
+          position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          z-index:-1;
+      }
+      ul {
+          display: block;
+          list-style-type: disc;
+          margin-block-start: 1em;
+          margin-block-end: 1em;
+          margin-inline-start: 0px;
+          margin-inline-end: 0px;
+          padding-inline-start: 40px;
+      }
+      .main-navication a {
+          display: block;
+          padding: 0 15px;
+          color: white;
+          text-decoration: none;
+      }
+      .main-navication span {
+          font-size: 12px;
+          line-height: 48px;
+          display: block;
+          opacity: 0;
+          transform: translateX(-50px);
+          transition: all 0.4s;
+      }
+      .pagination {
+          margin-bottom: 80px;
+          padding-left: 0;
+      }
+      .footer {
+          background: #2c3e50;
+          padding: 50px 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="main-navication">
+      <li>
+        <a href="/"><span>Home</span></a>
+      </li>
+      <li>
+        <a href="https://github.com"><span>Github</span></a>
+      </li>
+      <li>
+        <a href="https://www.v2ex.com/"><span>V2EX</span></a>
+      </li>
+    </ul>
+    
+    <div class="main">
+      <div class="page_header" >
+        <label class="navi-button">MENU</label>
+      </div>
+      <div class="author">
+        <div class="head">
+          <img src="imgs/uncle.jpg" class="img-responsive img-circle">
+        </div>
+        <h3 class="name">大叔的小站</h3>
+        <p class="name">往事随他去，人间不值得</p>
+      </div>
+      
+      <div class="content">
+        
+      </div>
+      
+      <center>
+        <ul class="pagination">
+          <li class="active">
+            <span>1 <span class="sr-only">(current)</span></span>
+          </li>
+        </ul>
+      </center>
+    </div>
+    
+
+    <div class="footer">
+      <ul class="social">
+        <li>
+          <a href="https://github.com/BoizZ" title="Github" target="_blank">
+          <i class="icon icon-github"></i></a>
+        </li>
+      </ul>
+      <center><a href="https://github.com/imuncle" title="Github" target="_blank"><img src="imgs/github.svg" style="width:50px"></center>
+    </div>
+
+  </body>
+  <script src = "js/jquery.min.js"></script>
+  <script src = "js/bootstrap.min.js"></script>
+  <script>
+    $(function(){ 
+    　$('.head').css("opacity","1");
+      $('.head').css("transform","translateY(0)");
+      $('.name').css("opacity","1");
+      $('.name').css("transform","translateY(0)");
+    });
+    $('.navi-button').click(function(){
+      if($('.main').css("transform") == "matrix(1, 0, 0, 1, 0, 0)")
+      {
+        $('.main').css("transform","translateX(-150px)");
+        $('.main-navication span').css("opacity","1");
+        $('.main-navication span').css("transform","translateX(0)");
+      }else {
+        $('.main').css("transform","translateX(0)");
+        $('.main-navication span').css("opacity","0");
+        $('.main-navication span').css("transform","translateX(-50px)");
+      }
+      
+    });
+  </script>
+</html>
