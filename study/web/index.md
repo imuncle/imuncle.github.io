@@ -6,5 +6,5 @@
 
 #文章列表
 <ul class="main_content" style="padding-left: 0;">
-  <li><p class="date">January 8, 2018</p><h4 class="title"><a href="study/web/?content=create_blog">博客搭建过程</a></h4><div class="excerpt"><p>最近正值期末考试，今天刚考完一门，昨晚上实在是不想复习了，正想着怎么办的时候，突然想把复习的考点放在自己的博客上，正好我半年前搭建了一个博客，打开一看发现只有最开始搭建的时候的一篇博客，感觉很失败。</p><p>之前的这篇博客采用的是Hexo+NexT框架搭建的，但是我的电脑几经改装，系统也重装了几次，node.js早就没了，想要继续维护这个博客有些麻烦，索性全删了，从头手写一个博客。</p></div><ul class="meta"><li>big_uncle</li><li><a href="study/web/">Web学习</a></li></ul></li>
+  <li><p class="date">January 8, 2018</p><h4 class="title"><a href="?content=create_blog">博客搭建过程</a></h4><div class="excerpt"><p>最近正值期末考试，今天刚考完一门，昨晚上实在是不想复习了，正想着怎么办的时候，突然想把复习的考点放在自己的博客上，正好我半年前搭建了一个博客，打开一看发现只有最开始搭建的时候的一篇博客，感觉很失败。</p><p>之前的这篇博客采用的是Hexo+NexT框架搭建的，但是我的电脑几经改装，系统也重装了几次，node.js早就没了，想要继续维护这个博客有些麻烦，索性全删了，从头手写一个博客。</p></div><ul class="meta"><li>big_uncle</li><li><a href="study/web/">Web学习</a></li></ul></li>
 </ul>
