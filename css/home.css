@@ -40,7 +40,7 @@
     transition: all 0.8s;
 }
 .name {
-  top: -75px;
+  top: -68px;
   position: relative;
   opacity: 0;
   transform: translateY(-20px);
