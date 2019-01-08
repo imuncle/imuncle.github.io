@@ -50,15 +50,6 @@ display: none; /*隐藏Android的语音输入按钮*/
 .main-navication li {
     list-style: none;
 }
-ul {
-    display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-}
 .main {
   transform: translateX(0);
   transition: all 0.4s;

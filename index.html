@@ -8,117 +8,17 @@
     <link rel="stylesheet" href="css/common.css">
     <link rel="icon" href="images/uncle.jpg">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/markdown-style.css">
+    <link rel="stylesheet" href="css/editormd.preview.css">
     <style>
-      
-      .page_header{
-        width:100%;
-        height:70vh;
-        position: relative;
-        background:url('images/page_background.jpg') no-repeat 5% 60%;
-      }
-      .navi-button {
-          font-size: .8rem;
-          color: #7f8c8d;
-          border: 1px solid rgba(127,140,141,0.6);
-          line-height: 35px;
-          border-radius: 4px;
-          display: block;
-          padding: 0 15px;
-          position: absolute;
-          right: 15px;
-          top: 15px;
-          cursor: pointer;
-          text-transform: uppercase;
-          z-index: 99;
-          transition: all .3s;
-      }
-      .author {
-          background: #ecf0f1;
-          text-align: center;
-          height:30vh;
-      }
-      .head {
-          display: inline-block;
-          width: 130px;
-          height: 130px;
-          border-radius: 50%;
-          padding: 3px;
-          background: #fff;
-          box-shadow: 0 0 5px #95a5a6;
-          position: relative;
-          top: -68px;
-          opacity: 0;
-          transform: translateY(-20px);
-          transition: all 0.8s;
-      }
-      .name {
-        top: -75px;
-        position: relative;
-        opacity: 0;
-        transform: translateY(-20px);
-        transition: all 0.8s;
-      }
-      
-      
-      .pagination {
-          margin-bottom: 80px;
-          padding-left: 0;
-      }
-      
-      body {
-        background: #2c3e50;
-      }
-      .main_content {
-        opacity: 0;
-        transform: translateY(-20px);
-        transition: all 0.8s;
-        margin: 72px auto 0 auto;
-        padding: 0 36px;
-        list-style: none;
-      }
-      .main_content>li {
-        margin-bottom: 80px;
-        h4.title {
-            font-weight: bold;
+      .main_content li > p {
+          margin:0;
         }
-      }
-      .main {
-        width:100%;
-        background:#ffffff;
-      }
-      .main_content>li p.date, .main_content>li h4.title {
-          font-weight: bold;
-      }
-      .main_content>li h4.title {
-          line-height: 1.5;
-          margin: 10px 0;
-      }
-      .main_content>li h4.title a {
-          color: #2c3e50;
-          transition: color .3s;
-      }
-      a {
+        .main_content a {
           text-decoration: none;
           color: #34495e;
-      }
-      .main_content>li .excerpt, .main_content>li .excerpt *, .main_content>li .no-title {
-          font-size: .9rem;
-          color: #7f8c8d;
-          line-height: 1.5;
-          margin: 0;
-      }
-      .main_content>li .meta {
-          margin-top: 20px;
-          border: 1px solid #ecf0f1;
-          border-width: 1px 0;
-          padding: 22px 10px;
-          font-size: .75rem;
-          color: #7f8c8d;
-      }
-      .main_content>li .meta>li {
-          margin-right: 22px;
-          display: inline-block;
-      }
+        }
     </style>
   </head>
   <body>
@@ -139,7 +39,17 @@
         <li>
           <a href="markdown.html" target="_blank"><span>Markdown</span></a>
         </li>
+        <li>
+        </li>
       </ul>
+      <center>
+        <p style="color: white">
+          <span>友链：
+            <a style="display:inline;padding:0" href="https://greedbob.github.io" target="_blank">Bo</a>/
+            <a style="display:inline;padding:0" href="https://hitszqmaker.github.io" target="_blank">Qmaker</a>
+          </span>
+        </p>
+      </center>
     </div>
     
     <div class="main">
@@ -155,8 +65,9 @@
         <p class="name">I am <text id="changerificwordspanid"></text> today!</p>
       </div>
       
-      <div class="container" style="">
-        <ul class="main_content">
+      <div class="container">
+        <div id="test-editormd-view"></div>
+        <!--<ul class="main_content">
           <li>
             <p class="date">January 7, 2018</p>
             <h4 class="title"><a href="study/college/?content=semiconductor">半导体物理复习</a></h4>
@@ -169,7 +80,7 @@
               <li><a href="study/college/">大学学习</a></li>
             </ul>
           </li>
-        </ul>
+        </ul>-->
       </div>
       <div class="footer">
         <center><a href="https://github.com/imuncle" title="Github" target="_blank"><img src="images/github.svg" style="width:50px"></center>
@@ -179,6 +90,16 @@
   <script src = "js/jquery.min.js"></script>
   <script src = "js/bootstrap.min.js"></script>
   <script src = "js/typed.js"></script>
+  <script src="lib/marked.min.js"></script>
+  <script src="lib/prettify.min.js"></script>
+  
+  <script src="lib/raphael.min.js"></script>
+  <script src="lib/underscore.min.js"></script>
+  <script src="lib/sequence-diagram.min.js"></script>
+  <script src="lib/flowchart.min.js"></script>
+  <script src="lib/jquery.flowchart.min.js"></script>
+
+  <script src="js/editormd.js"></script>
   <script>
     $(function(){ 
     　$('.head').css("opacity","1");
@@ -196,6 +117,20 @@
         shuffle: true,
         loop:true
       });
+      
+      $.get("index.md", function(markdown) {   
+        testEditormdView = editormd.markdownToHTML("test-editormd-view", {
+            markdown        : markdown ,//+ "\r\n" + $("#append-test").text(),
+            htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启
+            emoji           : true,
+            taskList        : true,
+            tex             : true,  // 默认不解析
+            flowChart       : true,  // 默认不解析
+            sequenceDiagram : true,  // 默认不解析 
+        });
+        setTimeout(function(){$('.main_content').css("opacity","1");
+              $('.main_content').css("transform","translateY(0)");},500);
+      }); 
     });
   </script>
   <script src = "js/menu.js"></script>
