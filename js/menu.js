@@ -12,3 +12,15 @@ $('.navi-button').click(function(){
     $('.main-navication span').css("transform","translateX(-50px)");
   }
 });
+
+function WeChart(command)
+{
+  if(command == "show") {
+    $('#wechart-qrcode').css("opacity","1");
+    $('#wechart-qrcode').css("transform","translateY(0)");
+  } else if(command == "hide")
+  {
+    $('#wechart-qrcode').css("opacity","0");
+    $('#wechart-qrcode').css("transform","translateY(-20px)");
+  }
+}
