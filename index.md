@@ -1,4 +1,15 @@
 <ul class="main_content" style="padding-left: 0;">
+  <li><p class="date">January 11, 2019</p><h4 class="title"><a href="study/rm/?content=int_to_short">关于电机数据为无符号整形的处理</a></h4><div class="excerpt"><p>前段时间我使用电机的时候，在电机的数据结构体中都是使用int类型。</p>```c
+struct CAN_Motor
+{
+    int fdbPosition;        //电机的编码器反馈值
+    int last_fdbPosition;   //电机上次的编码器反馈值
+    int bias_position;      //机器人初始状态电机位置环设定值
+    int fdbSpeed;           //电机反馈的转速/rpm
+    int round;              //电机转过的圈数
+    int real_position;      //过零处理后的电机转子位置
+};
+```</div><ul class="meta"><li>big_uncle</li><li><a href="study/rm/">RM比赛</a></li></ul></li>
   <li><p class="date">January 11, 2019</p><h4 class="title"><a href="study/rm/?content=jtag_swd">JTAG与SWD接线口转换</a></h4><div class="excerpt"><p>开发STM32时常在20pin的JTAG接口和4pin的SWD接口之间转换，但时间一长就记不住它们的线序对应关系，每次都去百度找感觉很麻烦，这次直接把它录进来。</p></div><ul class="meta"><li>big_uncle</li><li><a href="study/rm/">RM比赛</a></li></ul></li>
   <li><p class="date">January 10, 2019</p><h4 class="title"><a href="study/web/?content=phaser_2">Phaser 飞机大战学习（二）</a></h4><div class="excerpt"><p>Phaser 飞机大战学习-第二课</p><p>图片加载</p><p>背景图片科技使用`game.add.image(0,0,'backgroud')`，也可以使用`game.add.sprite(0,0,'background')`。</p></div><ul class="meta"><li>big_uncle</li><li><a href="study/web/">Web学习</a></li></ul></li>
   <li><p class="date">January 10, 2019</p><h4 class="title"><a href="study/web/?content=phaser_1">Phaser 飞机大战学习（一）</a></h4><div class="excerpt"><p>Phaser 飞机大战学习-第一课</p><p>从前年开始我就一直想进军H5游戏的领域，但是当时知识尚欠，连CANVAS这个标签都学不下去，后来我接触到了[three.js](https://github.com/mrdoob/three.js)和[pixi.js](https://github.com/pixijs/pixi.js)，一个是3D的，基于WebGL，一个是2D的，都很厉害，但最后都因为各种原因没有学下去。</p><p>前段时间我接触无意间接触到了phaser.js，这个游戏框架是专门用于2D游戏开发的，其实不只是开发游戏，动画也是可以做的。phaser.js框架好处在于它的小巧，而且是基于pixi.js的，入手很方便，但目前它的中文资料还不是很多，中文资料里面最赞的是[phaser小站](https://www.phaser-china.com/)，我的phaser学习也是通过这个小站入门的，这里就记录一下我前段时间学习phaser的一些收获</p></div><ul class="meta"><li>big_uncle</li><li><a href="study/web/">Web学习</a></li></ul></li>
