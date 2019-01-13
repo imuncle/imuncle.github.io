@@ -1,4 +1,5 @@
 <ul class="main_content" style="padding-left: 0;">
+  <li><p class="date">January 13, 2019</p><h4 class="title"><a href="study/rm/?content=judgement">裁判系统数据读取探索</a></h4><div class="excerpt"><p>RM备赛期间遇到需要读取裁判系统的数据，在此将学习过程记录下来。因为RM2019的裁判系统的通信协议还没有出来，所以我学习的是RM2018版的裁判系统的数据获取。</p><p>USART配置</p><p>我这里选用的是USART2，采用异步通信模式，并使能DMA，同时打开串口全局中断和DMA中断，波特率115200，数据位8位，停止位1位，无奇偶校验位。</p></div><ul class="meta"><li>big_uncle</li><li><a href="study/rm/">RM比赛</a></li></ul></li>
   <li><p class="date">January 11, 2019</p><h4 class="title"><a href="study/rm/?content=int_to_short">关于电机数据为无符号整形的处理</a></h4><div class="excerpt"><p>前段时间我使用电机的时候，在电机的数据结构体中都是使用int类型。</p>```c
 struct CAN_Motor
 {
