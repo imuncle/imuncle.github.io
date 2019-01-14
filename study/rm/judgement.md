@@ -1,5 +1,7 @@
 #裁判系统数据读取探索
 RM备赛期间遇到需要读取裁判系统的数据，在此将学习过程记录下来。因为RM2019的裁判系统的通信协议还没有出来，所以我学习的是RM2018版的裁判系统的数据获取。
+
+以下的代码都参考自RoboMaster官方代码，GitHub地址点[这里](https://github.com/RoboMaster/RoboRTS-Firmware)。
 #通信协议
 先看看2018版裁判系统的通信协议。
 [点我查看通信协议](?content=judgement_protocol)
