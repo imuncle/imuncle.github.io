@@ -1,0 +1,42 @@
+.video-btn{
+  width:80%;
+  height:35vw;
+  background:black;
+  margin: 0 auto;
+}
+
+ .video-area{
+  width:100%;
+  height: 100%;
+  background:black;
+}
+
+ iframe{
+  width: 100%;
+  height: 100%;
+}
+
+.video-detail{
+  opacity:0;
+  position:relative;
+  top:-50px;
+  width:100%;
+  height:50px;
+  background-color:black;
+  color:white;
+  transition: background 0.5s;
+  -webkit-transition: background 0.5s;
+}
+
+.video-detail:hover{
+  opacity:0.7;
+  display:block;
+  transition: background 0.5s;
+  -webkit-transition: background 0.5s;
+}
+
+.details{
+  font-family:"微软雅黑";
+  font-size:20px;
+  font-weight:50;
+}

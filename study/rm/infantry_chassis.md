@@ -12,7 +12,7 @@
 
 关于麦克纳姆轮的介绍可以查看这个视频的讲解，浅显易懂。
 
-<center><iframe src="//player.bilibili.com/player.html?aid=17229132&cid=28155837&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></center>
+<div class="video-btn" id="video-btn"><div class="video-area" id="video-area"><iframe src="//player.bilibili.com/player.html?aid=17229132&cid=28155837&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></div></div>
 
 麦克纳姆轮的运动解析计算可以参考这篇博客[【学渣的自我修养】麦克纳姆轮浅谈](https://zhuanlan.zhihu.com/p/20282234)，其实麦克纳姆轮底盘就是一个简单的运动合成，可以参考下面的代码进行理解。
 
