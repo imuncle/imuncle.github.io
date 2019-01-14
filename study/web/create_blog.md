@@ -64,7 +64,7 @@ $("#changerificwordspanid").typed({
 });
 ```
 将上面的Jquery的选择器和`strings`里面的内容替换成自己的就行了。
-##文章的发表
+#文章的发表
 这里我选择了MarkDown，众所周知MarkDown使用起来是及其方便的，我采用的就是网页js代码获取`.md`文件的内容后将样式渲染出来。
 
 我使用的是开源的[editor.md](https://pandao.github.io/editor.md/examples/)，非常方便，GitHub地址点[这里](https://github.com/pandao/editor.md)。在我的博客的菜单栏里就可以体验MarkDown。
