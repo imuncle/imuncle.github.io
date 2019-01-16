@@ -1,4 +1,5 @@
 <ul class="main_content" style="padding-left: 0;">
+  <li><p class="date">January 16, 2019</p><h4 class="title"><a href="study/rm/?content=pid">PID学习</a></h4><div class="excerpt"><p>今天终于开始调试英雄机器人的云台电机了，我采用的是位置环和速度环的串级PID，也是首先的先调速度环，然后调位置环。方位角和角速度都是靠陀螺仪获取的。</p><p>按理说，我如果将位置环失效，只用速度环的话，那么我用手拨动云台，它应该立即停下来，速度减为0，并且基本无振荡。但是出师不利，今天调参已经自闭一天了，所以决定再次学习一下PID的调参和原理。</p></div><ul class="meta"><li>big_uncle</li><li><a href="study/rm/">RM比赛</a></li></ul></li>
   <li><p class="date">January 16, 2019</p><h4 class="title"><a href="study/rm/?content=keil_compile">keil选择性编译那些事儿</a></h4><div class="excerpt"><p>今天遇到个非常奇葩的问题，我首先定义了四个全局变量`m3508_1`，`m3508_2`，`m3508_3`，`m3508_4`。</p>```c
 struct CAN_Motor
 {
