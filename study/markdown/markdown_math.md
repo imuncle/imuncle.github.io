@@ -33,10 +33,10 @@ $$\left. \frac{du}{dx} \right| _{x=0}$$
 ##分数
 使用`\frac{分子}{分母}`，或者使用`分子\over 分母`
 ```markdown
-\frac{1}{2x+1} , {{1} \over {2x+1}}
+\frac{1}{2x+1}
 ```
 
-$$\frac{1}{2x+1} , {{1} \over {2x+1}}$$
+$$\frac{1}{2x+1}$$
 
 ##开方
 使用`\sqrt{a}`
