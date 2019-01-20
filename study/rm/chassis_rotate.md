@@ -17,7 +17,7 @@ m3508_4.speed_pid.ref = infantry.chassis.FBSpeed - infantry.chassis.LRSpeed + in
 明白了这一点就很简单了，一张图就能讲解清楚。
 
 从上图可以看出，只要获取到了当前云台与底盘的夹角$$\alpha$$，$$V_x$$和$$V_y$$是遥控器给的指令，$$v_x$$和$$v_y$$是相对于底盘正方向的前后左右速度。
-<center>![](images/chassis_rotate.jpg)</center>
+![](images/chassis_rotate.png)
 它们之间存在以下的关系：
 
 $$v_x = V_x \times cos(\alpha) + V_y \times sin(\alpha)$$
@@ -25,6 +25,7 @@ $$v_x = V_x \times cos(\alpha) + V_y \times sin(\alpha)$$
 $$v_y = -V_X \times sin(\alpha) + V_y \times cos(\alpha)$$
 
 那么这个$$\alpha$$角度怎么获取呢？我使用了步兵车的yaw轴电机获取当前的角度差。代码如下：
+
 ```c
 angle = yaw_motor.fdbPosition - infantry.gimbal.YawBiasAngle;
 if(angle < 0)
@@ -36,9 +37,10 @@ angle = angle * 0.00076f;
 这里我遇到一个坑，我在[菜鸟教程](http://www.runoob.com/try/runcode.php?filename=helloworld&type=c)的C语言在线编译器上执行三角函数，发现三角函数是以角度值计算的，结果电机各种抖动，后来才发现在keil中三角函数是以弧度值计算的。
 
 所以angle的转换系数为
-$$\frac{2\pi}{8192}=0.00076$$
+$$\frac {2 \pi} {8192} = 0.00076$$
 
 最后附上我的代码：
+
 ```c
 float angle;
 int FBSpeed;
