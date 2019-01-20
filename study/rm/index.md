@@ -5,6 +5,7 @@
 漫漫编程路，希望头发能陪我一直走下去。
 #文章列表
 <ul class="main_content" style="padding-left: 0">
+  <li><p class="date">January 20, 2019</p><h4 class="title"><a href="?content=chassis_rotate">步兵底盘小陀螺的实现</a></h4><div class="excerpt"><p>我第一次看见小陀螺的时候是在去年比赛的佛山分区赛，当时我的比赛已经彻底结束了，在备场区看比赛直播，看见了有个战队的步兵可以**360度**旋转，还可以同时实现底盘的前后左右移动，当时死活想不通是怎么实现的。</p><p>昨天逛空间的时候再次看见了这种小陀螺，跑的确实欢快，心里非常羡慕，于是今天下午决心要实现小陀螺。</p></div><ul class="meta"><li>big_uncle</li><li><a href="study/rm/">RM比赛</a></li></ul></li>
   <li><p class="date">January 18, 2019</p><h4 class="title"><a href="?content=hero_pid">英雄车云台PID调试总结</a></h4><div class="excerpt"><p>今天已经18号了，距离出车的deadline已经不远了，留给电控的时间不多了。</p><p>按理说，我如果将位置环失效，只用速度环的话，那么我用手拨动云台，它应该立即停下来，速度减为0，并且基本无振荡。但是出师不利，今天调参已经自闭一天了，所以决定再次学习一下PID的调参和原理。</p><p>昨天和前天已经有好几波人轮流调了英雄车的云台，但都无功而返，眼看死期将至，决定自己还是亲自拼一把。</p></div><ul class="meta"><li>big_uncle</li><li><a href="study/rm/">RM比赛</a></li></ul></li>
   <li><p class="date">January 16, 2019</p><h4 class="title"><a href="?content=pid">PID学习</a></h4><div class="excerpt"><p>今天终于开始调试英雄机器人的云台电机了，我采用的是位置环和速度环的串级PID，也是首先的先调速度环，然后调位置环。方位角和角速度都是靠陀螺仪获取的。</p><p>按理说，我如果将位置环失效，只用速度环的话，那么我用手拨动云台，它应该立即停下来，速度减为0，并且基本无振荡。但是出师不利，今天调参已经自闭一天了，所以决定再次学习一下PID的调参和原理。</p></div><ul class="meta"><li>big_uncle</li><li><a href="study/rm/">RM比赛</a></li></ul></li>
   <li><p class="date">January 16, 2019</p><h4 class="title"><a href="?content=keil_compile">keil选择性编译那些事儿</a></h4><div class="excerpt"><p>今天遇到个非常奇葩的问题，我首先定义了四个全局变量`m3508_1`，`m3508_2`，`m3508_3`，`m3508_4`。</p>```c
