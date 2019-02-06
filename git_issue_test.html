@@ -99,7 +99,7 @@ function update() {
   var input = document.getElementById('input').value;
   ajax({
     method : 'post',
-    url : 'https://api.github.com/repos/imuncle/imuncle.github.io/issues/1/comments',
+    url : 'https://api.github.com/repos/imuncle/imuncle.github.io/issues/1/comments?access_token=4fdd25661393afe48b340c91390642897e661fdd',
     data : {
       "body" : input
     },
