@@ -5,6 +5,8 @@
     <title>GitHub issue测试</title>
   </head>
   <body>
+    <a href="https://github.com/login/oauth/authorize?client_id=22aaa014a31e292cfe21" target="_blank">登录</a>
+    <br>
     code<input id="code"><button onclick="get_access_token()">获取access_token</button>
     <br>
     access_token<input id="access_token"><button onclick="get_user_info()">获取用户信息</button>
@@ -99,7 +101,7 @@ function update() {
   var input = document.getElementById('input').value;
   ajax({
     method : 'post',
-    url : 'https://api.github.com/repos/imuncle/imuncle.github.io/issues/1/comments?access_token=4fdd25661393afe48b340c91390642897e661fdd',
+    url : 'https://api.github.com/repos/imuncle/imuncle.github.io/issues/1/comments',
     data : {
       "body" : input
     },
