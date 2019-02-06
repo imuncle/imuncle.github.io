@@ -5,10 +5,16 @@
     <title>GitHub issue测试</title>
   </head>
   <body>
+    code<input id="code"><button onclick="get_access_token()">获取access_token</button>
+    <br>
+    access_token<input id="access_token"><button onclick="get_user_info()">获取用户信息</button>
+    <br>
     <input id="input"><button onclick="update()">提交</button>
     <p id="content"></p>
   </body>
   <script>
+  var client_id = '22aaa014a31e292cfe21';
+  var client_secret = '7ba1b3718986fba62fdceb47c0a2f23a1adf0c1b';
   //通过createXHR()函数创建一个XHR对象：
 function createXHR() {
     if (window.XMLHttpRequest) {    //IE7+、Firefox、Opera、Chrome 和Safari
@@ -96,6 +102,38 @@ function update() {
     url : 'https://api.github.com/repos/imuncle/imuncle.github.io/issues/1/comments',
     data : {
       "body" : input
+    },
+    success : function (message) {
+      alert(message);
+    },
+    async : true
+  });
+}
+
+function get_access_token() {
+  var code = document.getElementById('code').value;
+  ajax({
+    method : 'post',
+    url : 'https://github.com/login/oauth/access_token',
+    data : {
+      "client_id" : client_id,
+      "client_secret" : client_secret,
+      "code" : code
+    },
+    success : function (message) {
+      alert(message);
+    },
+    async : true
+  });
+}
+
+function get_user_info() {
+  var access_token = document.getElementById('access_token').value;
+  ajax({
+    method : 'get',
+    url : 'https://api.github.com/user?access_token='+access_token,
+    data : {
+      
     },
     success : function (message) {
       alert(message);
