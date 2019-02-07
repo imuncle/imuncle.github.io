@@ -106,9 +106,11 @@ function update() {
   var access_token = document.getElementById('access_token').value;
   $.ajax({
     type: "post",
-    url:"https://api.github.com/repos/imuncle/imuncle.github.io/issues/1/comments?client_id="+client_id+"&client_secret="+client_secret,
+    url:"https://api.github.com/repos/imuncle/imuncle.github.io/issues/1/comments",
     headers: {
-      'Authorization' : 'token '+ access_token
+      Authorization : 'token '+ access_token,
+      Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json',
+      Content-Type: 'application/json'
     },
     data : {
       "body" : input
@@ -126,6 +128,7 @@ function get_access_token() {
     dataType:"jsonp",
     jsonp:"callback",
     headers : {
+      'Accept': 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json',
       'Content-Type': 'application/json; charset=UTF-8'
     },
     url:"https://github.com/login/oauth/access_token",
