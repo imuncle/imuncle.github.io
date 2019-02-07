@@ -133,12 +133,11 @@ function get_access_token() {
       'Content-Type': 'application/json; charset=UTF-8'
     },
     url:"https://github.com/login/oauth/access_token",
-    data : JSON.stringify({
+    data : {
       "client_id" : client_id,
       "client_secret" : client_secret,
       "code" : code
-    }),
-    dataType: "json",
+    },
     success: function (data) {
       console.log(data);
     }
