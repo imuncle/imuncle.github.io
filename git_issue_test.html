@@ -103,7 +103,7 @@ function update() {
   var access_token = document.getElementById('access_token').value;
   $.ajax({
     type: "post",
-    url:"https://api.github.com/repos/imuncle/imuncle.github.io/issues/1/comments?client_id="+client_id+"&client_secret="client_secret,
+    url:"https://api.github.com/repos/imuncle/imuncle.github.io/issues/1/comments?client_id="+client_id+"&client_secret="+client_secret,
     headers: {
       'Authorization' : 'token '+ access_token
     },
