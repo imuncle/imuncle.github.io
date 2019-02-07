@@ -105,7 +105,7 @@ function update() {
     type: "post",
     url:"https://api.github.com/repos/imuncle/imuncle.github.io/issues/1/comments",
     headers: {
-      'Authorization' : access_token
+      'Authorization' : 'token ' + access_token
     },
     data : {
       "body" : input
