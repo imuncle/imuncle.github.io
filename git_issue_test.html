@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
   </head>
   <body>
-    <a href="https://github.com/login/oauth/authorize?client_id=22aaa014a31e292cfe21" target="_blank">登录</a>
+    <a href="https://github.com/login/oauth/authorize?client_id=22aaa014a31e292cfe21&scope=public_repo" target="_blank">登录</a>
     <br>
     code<input id="code"><button onclick="get_access_token()">获取access_token</button>
     <br>
@@ -112,9 +112,10 @@ function update() {
       Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json',
       'Content-Type': 'application/json'
     },
-    data : {
+    data : JSON.stringify({
       "body" : input
-    },
+    }),
+    dataType: "json",
     success: function (data) {
       alert(data);
     }
