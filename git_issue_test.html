@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>GitHub issue测试</title>
     <script src="js/jquery.min.js"></script>
+    <script src="js/gitment.browser.js"></script>
+    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
   </head>
   <body>
     <a href="https://github.com/login/oauth/authorize?client_id=22aaa014a31e292cfe21" target="_blank">登录</a>
@@ -14,6 +16,7 @@
     <br>
     <input id="input"><button onclick="update()">提交</button>
     <p id="content"></p>
+    <div id="comments"></div>
   </body>
   <script>
   var client_id = '22aaa014a31e292cfe21';
@@ -116,27 +119,15 @@ function update() {
   });
 }
 
-/*function update() {
-  var input = document.getElementById('input').value;
-  ajax({
-    method : 'post',
-    url : 'https://api.github.com/repos/imuncle/imuncle.github.io/issues/1/comments',
-    data : {
-      "body" : input
-    },
-    success : function (message) {
-      alert(message);
-    },
-    async : true
-  });
-}*/
-
 function get_access_token() {
   var code = document.getElementById('code').value;
   $.ajax({
     type: "post",
     dataType:"jsonp",
     jsonp:"callback",
+    headers : {
+      'Content-Type': 'application/json; charset=UTF-8'
+    },
     url:"https://github.com/login/oauth/access_token",
     data : {
       "client_id" : client_id,
@@ -163,5 +154,18 @@ function get_user_info() {
     async : true
   });
 }
+
+const gitment = new Gitment({
+  owner: 'imuncle',
+  repo: 'imuncle.github.io',
+  oauth: {
+    client_id: '22aaa014a31e292cfe21',
+    client_secret: '7ba1b3718986fba62fdceb47c0a2f23a1adf0c1b',
+  },
+  // ...
+  // For more available options, check out the documentation below
+})
+
+gitment.render('comments')
   </script>
 </html>
