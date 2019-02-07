@@ -103,9 +103,9 @@ function update() {
   var access_token = document.getElementById('access_token').value;
   $.ajax({
     type: "post",
-    url:"https://api.github.com/repos/imuncle/imuncle.github.io/issues/1/comments",
+    url:"https://api.github.com/repos/imuncle/imuncle.github.io/issues/1/comments?client_id="+client_id+"&client_secret="client_secret,
     headers: {
-      'Authorization' : access_token
+      'Authorization' : 'token '+ access_token
     },
     data : {
       "body" : input
@@ -133,18 +133,19 @@ function update() {
 
 function get_access_token() {
   var code = document.getElementById('code').value;
-  ajax({
-    method : 'post',
-    url : 'https://github.com/login/oauth/access_token',
+  $.ajax({
+    type: "post",
+    dataType:"jsonp",
+    jsonp:"callback",
+    url:"https://github.com/login/oauth/access_token",
     data : {
       "client_id" : client_id,
       "client_secret" : client_secret,
       "code" : code
     },
-    success : function (message) {
-      alert(message);
-    },
-    async : true
+    success: function (data) {
+      console.log(data);
+    }
   });
 }
 
