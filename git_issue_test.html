@@ -129,15 +129,16 @@ function get_access_token() {
     dataType:"jsonp",
     jsonp:"callback",
     headers : {
-      'Accept': 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json',
+      'Accept': 'application/x-www-form-urlencoded',
       'Content-Type': 'application/json; charset=UTF-8'
     },
     url:"https://github.com/login/oauth/access_token",
-    data : {
+    data : JSON.stringify({
       "client_id" : client_id,
       "client_secret" : client_secret,
       "code" : code
-    },
+    }),
+    dataType: "json",
     success: function (data) {
       console.log(data);
     }
