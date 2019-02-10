@@ -49,6 +49,7 @@ display: none; /*隐藏Android的语音输入按钮*/
 }
 .main-navication li {
     list-style: none;
+    padding-left: 10px;
 }
 .main {
   transform: translateX(0);
@@ -80,3 +81,22 @@ display: none; /*隐藏Android的语音输入按钮*/
     transform: translateX(-50px);
     transition: all 0.4s;
 }
+ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+ul.pagination li {display: inline;}
+ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border:transparent;
+}
+ul.pagination li a.active {
+    background-color: #ddd;
+    color: white;
+    pointer-events:none;
+}
+ul.pagination li a:hover:not(.active) {background-color: #ddd;}

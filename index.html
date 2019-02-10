@@ -10,51 +10,42 @@
     <link rel="icon" href="images/uncle.jpg">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/markdown-style.css">
-    <link rel="stylesheet" href="css/editormd.preview.css">
+    <link rel="stylesheet" href="css/gitment.css">
     <style>
       .main_content li > p {
-          margin:0;
-        }
-        .main_content a {
-          text-decoration: none;
-          color: #34495e;
-        }
+        margin:0;
+      }
+      .main_content a {
+        text-decoration: none;
+        color: #34495e;
+      }
+      .issue{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+      }
+      html, body {
+        -webkit-user-select: none;
+        user-select: none;
+      }
     </style>
   </head>
   <body>
-    <div  class="main-navication">
+    <ul class="main-navication">
+      <ul id="menu"></ul>
+      <hr>
       <ul>
+        <li><a><span style="color: white;transform:translateX(4px)">友链：</span></a></li>
         <li>
-          <a href="/"><span>首页</span></a>
+          <a href="https://greedbob.github.io" target="_blank"><span>Bo</span></a>
         </li>
         <li>
-          <a href="study/web/"><span>Web技术</span></a>
-        </li>
-        <li>
-          <a href="study/college/"><span>大学学习</span></a>
-        </li>
-        <li>
-          <a href="study/rm/"><span>RM比赛</span></a>
-        </li>
-        <li>
-          <a href="study/other/"><span>其他</span></a>
-        </li>
-        <li id="markdown">
-          <a href="markdown.html" target="_blank"><span>Markdown</span></a>
-        </li>
-        <li>
+          <a href="https://hitszqmaker.github.io" target="_blank"><span>Qmaker</span></a>
         </li>
       </ul>
-      <center>
-        <p style="color: white" id="friend-link">
-          <span>友链：
-            <a style="display:inline;padding:0" href="https://greedbob.github.io" target="_blank">Bo</a>/
-            <a style="display:inline;padding:0" href="https://hitszqmaker.github.io" target="_blank">Qmaker</a>
-          </span>
-        </p>
-      </center>
-    </div>
+    </ul>
     
     <div class="main">
       <div class="page_header" >
@@ -70,76 +61,45 @@
       </div>
       
       <div class="container">
-        <div id="test-editormd-view"></div>
-        <!--<ul class="main_content">
-          <li>
-            <p class="date">January 7, 2018</p>
-            <h4 class="title"><a href="study/college/?content=semiconductor">半导体物理复习</a></h4>
-            <div class="excerpt">
-              <p>半导体物理与器件-复习<p>
-              <p>大三上</p>
-            </div>
-            <ul class="meta">
-              <li>big_uncle</li>
-              <li><a href="study/college/">大学学习</a></li>
-            </ul>
-          </li>
-        </ul>-->
+        <ul id="issue-list" class="main_content" style="padding-left: 0px; opacity: 1; transform: translateY(0px);">
+          <br>
+          <h4 class="title">内容加载中...</h4>
+          </br>
+        </ul>
+        <div style="text-align: center">
+          <ul class="pagination" id="pages" style="display: none"></ul>
+        </div>
       </div>
-      <div class="footer" style="position:relative">
-        <center>
+      <div class="footer" style="position:relative;text-align: center">
           <a href="https://github.com/imuncle" title="Github" target="_blank"><img src="images/github.svg" style="width:50px;margin-left:10px;margin-right:10px"></a>
           <img src="images/wechart.svg" title="WeChart" onmouseover="WeChart('show')" onmouseout="WeChart('hide')" style="width:50px;cursor:pointer;margin-left:10px;margin-right:10px">
-          <img id="wechart-qrcode" src="images/wechart-qrcode.jpg" style="width:130px;position:absolute;left:calc(50% - 28px);top:-110px;transform:translateY(-20px);opacity:0;transition: all .3s;box-shadow: 0 0 5px #95a5a6;">
-        </center>
-      </div>      
+          <img id="wechart-qrcode" src="images/wechart-qrcode.jpg" style="width:130px;position:absolute;left:calc(50% - 28px);top:-110px;transform:translateY(-20px);opacity:0;display:none;transition: all .3s;box-shadow: 0 0 5px #95a5a6;">
+      </div>
     </div>
   </body>
   <script src = "js/jquery.min.js"></script>
-  <script src = "js/bootstrap.min.js"></script>
   <script src = "js/typed.js"></script>
-  <script src="lib/marked.min.js"></script>
-  <script src="lib/prettify.min.js"></script>
-  
-  <script src="lib/raphael.min.js"></script>
-  <script src="lib/underscore.min.js"></script>
-  <script src="lib/sequence-diagram.min.js"></script>
-  <script src="lib/flowchart.min.js"></script>
-  <script src="lib/jquery.flowchart.min.js"></script>
-
-  <script src="js/editormd.js"></script>
-  <script>
-    $(function(){ 
-    　$('.head').css("opacity","1");
-      $('.head').css("transform","translateY(0)");
-      $('.name').css("opacity","1");
-      $('.name').css("transform","translateY(0)");
-      $('.main_content').css("opacity","1");
-      $('.main_content').css("transform","translateY(0)");
-      
-      $("#changerificwordspanid").typed({
-        strings: ["good", "happy", "healthy", "tall"],
-        typeSpeed: 100,
-        startDelay: 10,
-        showCursor: true,
-        shuffle: true,
-        loop:true
-      });
-      
-      $.get("index.md", function(markdown) {   
-        testEditormdView = editormd.markdownToHTML("test-editormd-view", {
-            markdown        : markdown ,//+ "\r\n" + $("#append-test").text(),
-            htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启
-            emoji           : true,
-            taskList        : true,
-            tex             : true,  // 默认不解析
-            flowChart       : true,  // 默认不解析
-            sequenceDiagram : true,  // 默认不解析 
-        });
-        setTimeout(function(){$('.main_content').css("opacity","1");
-              $('.main_content').css("transform","translateY(0)");},500);
-      }); 
-    });
-  </script>
   <script src = "js/menu.js"></script>
+  <script src = "js/issue-comment.js"></script>
+  <script>
+      $(function(){ 
+      　$('.head').css("opacity","1");
+        $('.head').css("transform","translateY(0)");
+        $('.name').css("opacity","1");
+        $('.name').css("transform","translateY(0)");
+        $('.main_content').css("opacity","1");
+        $('.main_content').css("transform","translateY(0)");
+        
+        $("#changerificwordspanid").typed({
+          strings: ["good", "happy", "healthy", "tall"],
+          typeSpeed: 100,
+          startDelay: 10,
+          showCursor: true,
+          shuffle: true,
+          loop:true
+        });
+      });
+
+      issueListPage();
+    </script>
 </html>
