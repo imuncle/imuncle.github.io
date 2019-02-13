@@ -191,7 +191,16 @@ function comment() {
         }),
         dataType: "json",
         success: function (data) {
-            
+            if(data.id != undefined) {
+                document.getElementById('comment-input').value = "";
+                document.getElementById('comment-list').innerHTML += '<li class="gitment-comment">'+
+            '<a class="gitment-comment-avatar" href='+data.user.html_url+' target="_blank">'+
+              '<img class="gitment-comment-avatar-img" src='+data.user.avatar_url+'></a>'+
+            '<div class="gitment-comment-main"><div class="gitment-comment-header">'+
+                '<a class="gitment-comment-name" href='+data.user.html_url+' target="_blank">'+data.user.login+'</a> 评论于 '+
+                '<span>'+data.created_at+'</span></div><div class="gitment-comment-body gitment-markdown">'+
+                data.body_html+'</div></div>';
+            }
         }
     });
 }
