@@ -6,6 +6,11 @@ GetMenu();
 
 function articlePage() {
     var id = getUrlParam('id');
+    var token = getUrlParam('access_token');
+    if(token != null) {
+        window.localStorage.setItem("access_token", token);
+        window.location.href = window.location.origin + window.location.pathname + '?id='+getUrlParam('id');
+    }
     getPageNum('https://api.github.com/repos/imuncle/imuncle.github.io/issues/'+id+'/comments');
     $.ajax({
         type : 'get',
@@ -23,11 +28,6 @@ function articlePage() {
             commentListInit(data.comments,id);
         }
     });
-    var token = getUrlParam('access_token');
-    if(token != null) {
-        window.localStorage.setItem("access_token", token);
-        window.location.href = window.location.origin + window.location.pathname + '?id='+getUrlParam('id');
-    }
     checkIsLogin();
     if(IsLogIn == true) {
         $.ajax({
@@ -200,6 +200,7 @@ function comment() {
                 '<a class="gitment-comment-name" href='+data.user.html_url+' target="_blank">'+data.user.login+'</a> 评论于 '+
                 '<span>'+data.created_at+'</span></div><div class="gitment-comment-body gitment-markdown">'+
                 data.body_html+'</div></div>';
+                document.getElementById('comments-num').innerHTML ++;
             }
         }
     });
