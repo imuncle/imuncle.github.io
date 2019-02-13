@@ -180,7 +180,7 @@ function comment() {
     var access_token = window.localStorage.access_token;
     $.ajax({
         type: "post",
-        url:"https://api.github.com/repos/imuncle/imuncle.github.io/issues/1/comments",
+        url:"https://api.github.com/repos/imuncle/imuncle.github.io/issues/"+getUrlParam('id')+"/comments",
         headers: {
         Authorization : 'token '+ access_token,
             Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json',
