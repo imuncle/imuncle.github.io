@@ -37,6 +37,10 @@ function articlePage() {
                 window.localStorage.setItem('user_avatar_url',data.avatar_url);
                 window.localStorage.setItem('user_url', data.html_url);
                 commentInputInit();
+            },
+            error:function(data) {
+                IsLogIn = false;
+                commentInputInit();
             }
         });
     } else {
