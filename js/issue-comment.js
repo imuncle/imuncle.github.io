@@ -39,8 +39,7 @@ function articlePage() {
                 commentInputInit();
             },
             error:function(data) {
-                IsLogIn = false;
-                commentInputInit();
+                logout();
             }
         });
     } else {

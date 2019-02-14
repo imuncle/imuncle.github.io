@@ -66,9 +66,6 @@ body {
 }
 .main_content>li {
   margin-bottom: 20px;
-  h4.title {
-      font-weight: bold;
-  }
 }
 .main {
   width:100%;
