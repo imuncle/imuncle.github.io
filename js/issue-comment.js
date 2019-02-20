@@ -3,6 +3,7 @@ var issue_num;
 var page = getUrlParam('page');
 if(page == undefined) page = 1;
 GetMenu();
+console.log(window.localStorage);
 
 function articlePage() {
     var id = getUrlParam('id');
@@ -10,8 +11,6 @@ function articlePage() {
     if(token != null) {
         window.localStorage.setItem("access_token", token);
         window.location.href = window.location.origin + window.location.pathname + '?id='+getUrlParam('id');
-        alert("登录成功！");
-        console.log(window.localStorage);
     }
     getPageNum('https://api.github.com/repos/imuncle/imuncle.github.io/issues/'+id+'/comments');
     $.ajax({
