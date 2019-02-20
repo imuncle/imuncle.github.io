@@ -10,6 +10,8 @@ function articlePage() {
     if(token != null) {
         window.localStorage.setItem("access_token", token);
         window.location.href = window.location.origin + window.location.pathname + '?id='+getUrlParam('id');
+        alert("登录成功！");
+        console.log(window.localStorage);
     }
     getPageNum('https://api.github.com/repos/imuncle/imuncle.github.io/issues/'+id+'/comments');
     $.ajax({
