@@ -39,6 +39,8 @@ function articlePage() {
                 commentInputInit();
             },
             error:function(data) {
+                console.log(data);
+                console.log("用户信息过期，退出登录状态");
                 logout();
             }
         });
