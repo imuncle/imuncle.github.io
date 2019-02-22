@@ -23,7 +23,7 @@ var redirect_url = getUrlParam('state');
 if(code != undefined && redirect_url != undefined) {
     $.ajax({
         type:'get',
-        url:server_link,
+        url:config.server_link,
         success:function(data) {
             window.localStorage.setItem("access_token", data);
             window.location.href = redirect_url;
