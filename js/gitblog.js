@@ -17,6 +17,7 @@ PageInit();
 var IsLogIn = false;
 var issue_num;
 var page = getUrlParam('page');
+<<<<<<< HEAD:js/gitblog.js
 if(page == undefined || page == null) page = 1;
 
 var code = getUrlParam('code');
@@ -80,6 +81,11 @@ function WeChart(command)
     $('#wechart-qrcode').css("transform","translateY(-20px)");
   }
 }
+=======
+if(page == undefined) page = 1;
+GetMenu();
+console.log(window.localStorage);
+>>>>>>> 0e3a01f7388f6ac5c6db5ad9826f7d17a0fc4524:js/issue-comment.js
 
 function articlePage() {
     var id = getUrlParam('id');
