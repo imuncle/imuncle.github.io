@@ -1,15 +1,14 @@
 var config = {
-    name : "your github username",
-    repo : "your github reponame",
-    client_id : "your client_id here",
-    client_secret : "your client_secret here",
-    title : "add your title",
-    instruction : "add your instruction",
-    server_link : 'your server link here',
+    name : "imuncle",
+    repo : "imuncle.github.io",
+    client_id : "22aaa014a31e292cfe21",
+    client_secret : "7ba1b3718986fba62fdceb47c0a2f23a1adf0c1b",
+    title : "大叔的小站",
+    instruction : "往事随他去，人间不值得",
+    server_link : 'http://19.23.8.25/gh-oauth-server.php',
     friends : {
-        //add your friends link here
-        //example:
-        //imuncle : 'https://imuncle.github.io',
+        Bo : 'https://greedbob.github.io',
+        hitszqmaker : 'https://hitszqmaker.github.io',
     },
 };
 
@@ -17,7 +16,6 @@ PageInit();
 var IsLogIn = false;
 var issue_num;
 var page = getUrlParam('page');
-<<<<<<< HEAD:js/gitblog.js
 if(page == undefined || page == null) page = 1;
 
 var code = getUrlParam('code');
@@ -81,11 +79,6 @@ function WeChart(command)
     $('#wechart-qrcode').css("transform","translateY(-20px)");
   }
 }
-=======
-if(page == undefined) page = 1;
-GetMenu();
-console.log(window.localStorage);
->>>>>>> 0e3a01f7388f6ac5c6db5ad9826f7d17a0fc4524:js/issue-comment.js
 
 function articlePage() {
     var id = getUrlParam('id');
