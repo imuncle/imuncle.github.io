@@ -104,3 +104,21 @@ a {
     margin-right: 22px;
     display: inline-block;
 }
+.main_content li > p {
+  margin:0;
+}
+.main_content a {
+  text-decoration: none;
+  color: #34495e;
+}
+.issue{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+html, body {
+  -webkit-user-select: none;
+  user-select: none;
+}

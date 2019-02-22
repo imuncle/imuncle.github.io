@@ -1,25 +1,98 @@
+var config = {
+    name : "your github username",
+    repo : "your github reponame",
+    client_id : "your client_id here",
+    client_secret : "your client_secret here",
+    title : "add your title",
+    instruction : "add your instruction",
+    server_link : 'your server link here',
+    friends : {
+        //add your friends link here
+        //example:
+        //imuncle : 'https://imuncle.github.io',
+    },
+};
+
+PageInit();
 var IsLogIn = false;
 var issue_num;
 var page = getUrlParam('page');
-if(page == undefined) page = 1;
-GetMenu();
+if(page == undefined || page == null) page = 1;
+
+var code = getUrlParam('code');
+var redirect_url = getUrlParam('state');
+if(code != undefined && redirect_url != undefined) {
+    $.ajax({
+        type:'get',
+        url:server_link,
+        success:function(data) {
+            window.localStorage.setItem("access_token", data);
+            window.location.href = redirect_url;
+        },
+        error:function(data) {
+            console.log(data);
+            alert("登录失败！");
+            window.location.href = redirect_url;
+        }
+    });
+}
+
+function PageInit() {
+    $('#title').text(config.title);
+    $('#instruction').text(config.instruction);
+    document.getElementsByTagName("title")[0].innerText = config.title;
+    
+    if(Object.keys(config.friends).length != 0) {
+        var menu_friend = document.getElementById("friends");
+        menu_friend.innerHTML = '<li><a><span style="color: white;transform:translateX(4px)">友链：</span></a></li>';
+        for(var name in config.friends) {
+            menu_friend.innerHTML += '<li><a href='+config.friends[name]+' target="_blank"><span>'+name+'</span></a></li>';
+        }
+    }
+    GetMenu();
+}
+
+$('.navi-button').click(function(){
+    if($('.main').css("transform") == "matrix(1, 0, 0, 1, 0, 0)")
+    {
+        $('.main').css("transform","translateX(-150px)");
+        $('.main-navication span').css("opacity","1");
+        $('.main-navication').css("opacity","1");
+        $('.main-navication span').css("transform","translateX(-10px)");
+    }else {
+        $('.main').css("transform","translateX(0)");
+        $('.main-navication span').css("opacity","0");
+        $('.main-navication').css("opacity","0");
+        $('.main-navication span').css("transform","translateX(-50px)");
+    }
+});
+
+function WeChart(command)
+{
+  if(command == "show") {
+    $('#wechart-qrcode').css('display','block');
+    $('#wechart-qrcode').css("opacity","1");
+    $('#wechart-qrcode').css("transform","translateY(0)");
+  } else if(command == "hide")
+  {
+    $('#wechart-qrcode').css('display','none');
+    $('#wechart-qrcode').css("opacity","0");
+    $('#wechart-qrcode').css("transform","translateY(-20px)");
+  }
+}
 
 function articlePage() {
     var id = getUrlParam('id');
-    var token = getUrlParam('access_token');
-    if(token != null) {
-        window.localStorage.setItem("access_token", token);
-        window.location.href = window.location.origin + window.location.pathname + '?id='+getUrlParam('id');
-    }
-    getPageNum('https://api.github.com/repos/imuncle/imuncle.github.io/issues/'+id+'/comments');
+    getPageNum('https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues/'+id+'/comments');
     $.ajax({
         type : 'get',
         headers : {
             Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json, application/x-www-form-urlencoded',
         },
-        url : 'https://api.github.com/repos/imuncle/imuncle.github.io/issues/'+id,
+        url : 'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues/'+id,
         success : function(data) {
             document.getElementById('title').innerHTML = data.title;
+            document.getElementsByTagName("title")[0].innerText = data.title+"-大叔的小站";
             document.getElementById('content').innerHTML = data.body_html;
             var labels = document.getElementById('labels');
             for(var i=0;i<data.labels.length;i++) {
@@ -39,7 +112,6 @@ function articlePage() {
                 commentInputInit();
             },
             error:function(data) {
-                console.log(data);
                 console.log("用户信息过期，退出登录状态");
                 logout();
             }
@@ -54,11 +126,11 @@ function issueListPage() {
     var issue_url;
     var issue_perpage_url;
     if(label == undefined) {
-        issue_url = 'https://api.github.com/repos/imuncle/imuncle.github.io/issues';
-        issue_perpage_url = 'https://api.github.com/repos/imuncle/imuncle.github.io/issues?';
+        issue_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues';
+        issue_perpage_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues?';
     }else {
-        issue_url = 'https://api.github.com/repos/imuncle/imuncle.github.io/issues?labels='+label;
-        issue_perpage_url = 'https://api.github.com/repos/imuncle/imuncle.github.io/issues?labels='+label+'&';
+        issue_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues?labels='+label;
+        issue_perpage_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues?labels='+label+'&';
         document.getElementById('title').innerHTML = label;
     }
     getPageNum(issue_url);
@@ -73,7 +145,7 @@ function commentListInit(num, issue_id) {
         headers : {
             Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json, application/x-www-form-urlencoded',
         },
-        url:'https://api.github.com/repos/imuncle/imuncle.github.io/issues/'+issue_id+'/comments?page='+page+'&per_page=10',
+        url:'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues/'+issue_id+'/comments?page='+page+'&per_page=10',
         success : function(data) {
             for(var i=0;i<data.length;i++) {
                 comment_list.innerHTML += '<li class="gitment-comment">'+
@@ -164,7 +236,7 @@ function preview() {
 }
 
 function login() {
-    var url = 'https://github.com/login/oauth/authorize?client_id=22aaa014a31e292cfe21&scope=public_repo&state='+window.location.href;
+    var url = 'https://github.com/login/oauth/authorize?client_id='+config.client_id+'&scope=public_repo&state='+window.location.href;
     window.location.href = url;
 }
 
@@ -185,7 +257,7 @@ function comment() {
     var access_token = window.localStorage.access_token;
     $.ajax({
         type: "post",
-        url:"https://api.github.com/repos/imuncle/imuncle.github.io/issues/"+getUrlParam('id')+"/comments",
+        url:'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues/'+getUrlParam('id')+'/comments',
         headers: {
         Authorization : 'token '+ access_token,
             Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json',
@@ -214,7 +286,7 @@ function comment() {
 function GetMenu() {
     $.ajax({
         type:'get',
-        url:'https://api.github.com/repos/imuncle/imuncle.github.io/labels',
+        url:'https://api.github.com/repos/'+config.name+'/'+config.repo+'/labels',
         success:function(data) {
             document.getElementById('menu').innerHTML += '<li><a href="./"><span>首页</span></a></li>'
             for(var i=0;i<data.length;i++) {
@@ -222,6 +294,7 @@ function GetMenu() {
             }
         },
     });
+    document.getElementById("footer").innerHTML += 'Power By <a href="https://github.com/imuncle/gitblog" target="_blank" style="color: aquamarine">gitblog</a>';
 }
 
 // 获取每一页的issue内容
@@ -269,6 +342,7 @@ function getPageNum(request_url) {
                 }
                 document.getElementById('pages').innerHTML += '<li id="next_page"><a href="javascript:nextPage()">»</a></li>';
                 turnToPage(page, pages);
+                
             }
         }
     });

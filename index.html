@@ -2,41 +2,20 @@
 <html>
   <head>
     <meta name="google-site-verification" content="4T3DT1L7LoqmCrr4QoTb1PBVO4TNI0BHrjIWNOddJYE" />
-    <title>大叔的个人小站</title>
+    <title></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
     <meta name="format-detection" content="telephone=no"/>
     <link rel="stylesheet" href="css/common.css">
-    <link rel="icon" href="images/uncle.jpg">
+    <link rel="icon" href="images/avatar.jpg">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/gitment.css">
-    <style>
-      .main_content li > p {
-        margin:0;
-      }
-      .main_content a {
-        text-decoration: none;
-        color: #34495e;
-      }
-      .issue{
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 6;
-        -webkit-box-orient: vertical;
-      }
-      html, body {
-        -webkit-user-select: none;
-        user-select: none;
-      }
-    </style>
   </head>
   <body>
     <ul class="main-navication">
       <ul id="menu"></ul>
       <hr>
-      <ul>
+      <ul id="friends">
         <li><a><span style="color: white;transform:translateX(4px)">友链：</span></a></li>
         <li>
           <a href="https://greedbob.github.io" target="_blank"><span>Bo</span></a>
@@ -53,10 +32,10 @@
       </div>
       <div class="author">
         <div class="head">
-          <img src="images/uncle.jpg" class="img-responsive img-circle">
+          <img src="images/avatar.jpg" class="img-responsive img-circle">
         </div>
-        <h3 class="name">大叔的小站</h3>
-        <p class="name">往事随他去，人间不值得</p>
+        <h3 class="name" id="title"></h3>
+        <p class="name" id="instruction"></p>
         <p class="name">I am <text id="changerificwordspanid"></text> today!</p>
       </div>
       
@@ -75,12 +54,12 @@
           <img src="images/wechart.svg" title="WeChart" onmouseover="WeChart('show')" onmouseout="WeChart('hide')" style="width:50px;cursor:pointer;margin-left:10px;margin-right:10px">
           <img id="wechart-qrcode" src="images/wechart-qrcode.jpg" style="width:130px;position:absolute;left:calc(50% - 28px);top:-110px;transform:translateY(-20px);opacity:0;display:none;transition: all .3s;box-shadow: 0 0 5px #95a5a6;">
       </div>
+      <div id="footer" style="text-align: center;background: #2c3e50;padding-bottom: 10px;color: aquamarine"></div>
     </div>
   </body>
   <script src = "js/jquery.min.js"></script>
   <script src = "js/typed.js"></script>
-  <script src = "js/menu.js"></script>
-  <script src = "js/issue-comment.js"></script>
+  <script src = "js/gitblog.js"></script>
   <script>
       $(function(){ 
       　$('.head').css("opacity","1");

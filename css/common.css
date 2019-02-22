@@ -100,3 +100,20 @@ ul.pagination li a.active {
     pointer-events:none;
 }
 ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+.post-tags {
+margin-top: 40px;
+text-align: center;
+}
+.post-tags a {
+display: inline-block;
+margin-right: 10px;
+font-size: 13px;
+overflow-wrap: break-word;
+word-wrap: break-word;
+background-color: transparent;
+color: #555;
+text-decoration: none;
+outline: none;
+border-bottom: 1px solid #999;
+cursor: pointer;
+}
