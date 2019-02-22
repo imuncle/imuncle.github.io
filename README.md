@@ -32,4 +32,6 @@ issue_per_label.html
 |__issue_comment.js
 ```
 
-后续打算把该博客模板整理出来，单独建个repository。
+~~后续打算把该博客模板整理出来，单独建个repository。~~
+
+已经开源出来了，详见[gitblog](https://github.com/imuncle/gitblog)。
