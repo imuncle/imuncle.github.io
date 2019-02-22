@@ -5,7 +5,7 @@ var config = {
     client_secret : "7ba1b3718986fba62fdceb47c0a2f23a1adf0c1b",
     title : "大叔的小站",
     instruction : "往事随他去，人间不值得",
-    server_link : 'http://19.23.8.25/gh-oauth-server.php',
+    server_link : 'http://119.23.8.25/gh-oauth-server.php',
     friends : {
         Bo : 'https://greedbob.github.io',
         hitszqmaker : 'https://hitszqmaker.github.io',
