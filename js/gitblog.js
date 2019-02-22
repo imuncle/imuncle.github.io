@@ -21,20 +21,7 @@ if(page == undefined || page == null) page = 1;
 var code = getUrlParam('code');
 var redirect_url = getUrlParam('state');
 if(code != undefined && redirect_url != undefined) {
-    $.ajax({
-        type:'get',
-        dataType:'jsonp',
-        url:config.server_link+"?code="+code+"&client_id="+config.client_id+"&client_secret="+config.client_secret,
-        success:function(data) {
-            window.localStorage.setItem("access_token", data);
-            window.location.href = redirect_url;
-        },
-        error:function(data) {
-            console.log(data);
-            alert("登录失败！");
-            window.location.href = redirect_url;
-        }
-    });
+    window.location.href = config.server_link+"?code="+code+"&redirect_url="+redirect_url+"&client_id="+config.client_id+"&client_secret="+config.client_secret;
 }
 
 function PageInit() {
@@ -83,6 +70,11 @@ function WeChart(command)
 
 function articlePage() {
     var id = getUrlParam('id');
+    var token = getUrlParam('access_token');
+    if(token != undefined) {
+        window.localStorage.setItem("access_token",token);
+        window.location.href = window.location.origin + window.location.pathname + "?id="+id;
+    }
     getPageNum('https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues/'+id+'/comments');
     $.ajax({
         type : 'get',
