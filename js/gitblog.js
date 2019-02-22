@@ -23,6 +23,7 @@ var redirect_url = getUrlParam('state');
 if(code != undefined && redirect_url != undefined) {
     $.ajax({
         type:'get',
+        dataType:'jsonp',
         url:config.server_link+"?code="+code+"&client_id="+config.client_id+"&client_secret="+config.client_secret,
         success:function(data) {
             window.localStorage.setItem("access_token", data);
