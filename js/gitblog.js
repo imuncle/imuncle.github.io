@@ -21,7 +21,17 @@ if(page == undefined || page == null) page = 1;
 var code = getUrlParam('code');
 var redirect_url = getUrlParam('state');
 if(code != undefined && redirect_url != undefined) {
-    window.location.href = config.server_link+"?code="+code+"&redirect_url="+redirect_url+"&client_id="+config.client_id+"&client_secret="+config.client_secret;
+    //window.location.href = config.server_link+"?code="+code+"&redirect_url="+redirect_url+"&client_id="+config.client_id+"&client_secret="+config.client_secret;
+    var url = "https://github.com/login/oauth/access_token?client_id="+config.client_id+"&client_secret="+config.client_secret+"&code="+config.code;
+    $.jsonp({
+        "url": url,
+        "success": function(data) {
+            console.log(data);
+        },
+        "error": function(msg) {
+            alert("error: "+msg);
+        }
+    });
 }
 
 function PageInit() {
