@@ -32,7 +32,8 @@ if(code != undefined && redirect_url != undefined) {
          },
           "error": function(d,msg) {
           alert("Could not find user ");
-      }
+          }
+      });
 }
 
 function PageInit() {
