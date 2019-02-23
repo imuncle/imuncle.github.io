@@ -32,13 +32,14 @@ input::-webkit-input-speech-button {
     border-radius: 4px;
     display: block;
     padding: 0 15px;
-    position: absolute;
+    position: fixed;
     right: 15px;
     top: 15px;
     cursor: pointer;
     text-transform: uppercase;
     z-index: 99;
-    transition: all .3s;
+    transform: translateX(0);
+    transition: all 0.4s;
 }
 .main-navication li {
     list-style: none;
@@ -53,7 +54,7 @@ input::-webkit-input-speech-button {
     padding: 100px 0 0;
     background: #2c3e50;
     width: 150px;
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 0;
     bottom: 0;
@@ -109,4 +110,16 @@ text-decoration: none;
 outline: none;
 border-bottom: 1px solid #999;
 cursor: pointer;
+}
+.Totop {
+    position: fixed;
+    right: 20px;
+    bottom: 50px;
+    display: block;
+    width: 42px;
+    height: 42px;
+    opacity: 0;
+    cursor: pointer;
+    transform: translateY(0px);
+    transition: all 0.4s;
 }

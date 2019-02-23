@@ -2,23 +2,7 @@
   width:100%;
   height:70vh;
   position: relative;
-  background:url('../images/page_background.jpg') no-repeat 5% 60%;
-}
-.navi-button {
-    font-size: .8rem;
-    color: #7f8c8d;
-    border: 1px solid rgba(127,140,141,0.6);
-    line-height: 35px;
-    border-radius: 4px;
-    display: block;
-    padding: 0 15px;
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    cursor: pointer;
-    text-transform: uppercase;
-    z-index: 99;
-    transition: all .3s;
+  background:url('../images/page_background.png') no-repeat center 70%;
 }
 .author {
     background: #ecf0f1;
@@ -46,15 +30,9 @@
   transform: translateY(-20px);
   transition: all 0.8s;
 }
-
-
 .pagination {
     margin-bottom: 80px;
     padding-left: 0;
-}
-
-body {
-  background: #2c3e50;
 }
 .main_content {
   opacity: 0;
