@@ -24,7 +24,8 @@ if(code != undefined && redirect_url != undefined) {
     //window.location.href = config.server_link+"?code="+code+"&redirect_url="+redirect_url+"&client_id="+config.client_id+"&client_secret="+config.client_secret;
     var url = "https://github.com/login/oauth/access_token?client_id="+config.client_id+"&client_secret="+config.client_secret+"&code="+config.code;
 
-    $.ajax({
+    try {
+        $.ajax({
         dataType: "jsonp",
         "url": url,
          "success": function(data) {
@@ -34,6 +35,9 @@ if(code != undefined && redirect_url != undefined) {
           alert("Could not find user ");
           }
       });
+    }catch(err) {
+        console.log(err);
+    }
 }
 
 function PageInit() {
