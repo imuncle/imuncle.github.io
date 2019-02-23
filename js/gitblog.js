@@ -60,7 +60,7 @@ $('.navi-button').click(function(){
 
 $('.Totop').click(function() {
     $('html,body').animate(
-        { scrollTop: top }, 600
+        { scrollTop: '0px' }, 600
     );
 });
 
