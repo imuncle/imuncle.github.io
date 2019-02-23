@@ -8,7 +8,7 @@ var config = {
     server_link : 'http://119.23.8.25/gh-oauth-server.php',
     friends : {
         Bo : 'https://greedbob.github.io',
-        hitszqmaker : 'https://hitszqmaker.github.io',
+        Qmaker : 'https://hitszqmaker.github.io',
     },
 };
 
@@ -59,8 +59,8 @@ $('.navi-button').click(function(){
 });
 
 $('.Totop').click(function() {
-    $('html').animate(
-        { scrollTop: '0px' }, 600
+    $('html,body').animate(
+        { scrollTop: top }, 600
     );
 });
 
