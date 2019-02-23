@@ -82,6 +82,7 @@ function articlePage() {
     var id = getUrlParam('id');
     var token = getUrlParam('access_token');
     if(token != undefined) {
+        window.localStorage.clear();
         window.localStorage.setItem("access_token",token);
         if(window.localStorage.access_token != undefined) {
             window.location.href = window.location.origin + window.location.pathname + "?id="+id;
