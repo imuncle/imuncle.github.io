@@ -400,7 +400,7 @@ function nextPage() {
 }
 
 window.onscroll = function() {
-    if($(document).scrollTop() >= 1.2*document.documentElement.clientHeight) {
+    if($(document).scrollTop() >= 0.6*document.documentElement.clientHeight) {
         $('.Totop').css('opacity',1);
     }else {
         $('.Totop').css('opacity',0);
