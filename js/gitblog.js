@@ -81,7 +81,7 @@ function WeChart(command)
 function articlePage() {
     var id = getUrlParam('id');
     var token = getUrlParam('access_token');
-    if(token != undefined) {
+    if(token != undefined && token != null) {
         window.localStorage.clear();
         window.localStorage.setItem("access_token",token);
         console.log(window.localStorage);
