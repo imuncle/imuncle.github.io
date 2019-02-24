@@ -84,6 +84,7 @@ function articlePage() {
     if(token != undefined) {
         window.localStorage.clear();
         window.localStorage.setItem("access_token",token);
+        console.log(window.localStorage);
         if(window.localStorage.access_token != undefined) {
             window.location.href = window.location.origin + window.location.pathname + "?id="+id;
         }
@@ -197,6 +198,8 @@ function commentInputInit() {
 function checkIsLogin() {
     if(window.localStorage.access_token != undefined) {
         IsLogIn = true;
+    }else {
+        alert("没有获取到用户信息！");
     }
 }
 
