@@ -84,7 +84,7 @@ function articlePage() {
     if(token != undefined && token != null) {
         window.localStorage.clear();
         window.localStorage.setItem("access_token",token);
-        history.pushState(null, config.title, 'content.html?id='+id);
+        history.replaceState(null, config.title, 'content.html?id='+id);
     }
     getPageNum('https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues/'+id+'/comments');
     $.ajax({
@@ -195,8 +195,6 @@ function commentInputInit() {
 function checkIsLogin() {
     if(window.localStorage.access_token != undefined) {
         IsLogIn = true;
-    }else {
-        alert("没有获取到用户信息！");
     }
 }
 
