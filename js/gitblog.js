@@ -135,6 +135,16 @@ function issueListPage() {
         issue_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues?labels='+label;
         issue_perpage_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues?labels='+label+'&';
         document.getElementById('title').innerHTML = label;
+        $.ajax({
+            type:'get',
+            headers : {
+                Accept: 'application/vnd.github.symmetra-preview+json',
+            },
+            url:'https://api.github.com/repos/'+config.name+'/'+config.repo+'/labels/'+label,
+            success:function(data) {
+                document.getElementById('instruction').innerHTML = data.description;
+            }
+        });
     }
     getPageNum(issue_url);
     getIssuePerpage(issue_perpage_url);
