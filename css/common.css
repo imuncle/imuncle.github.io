@@ -23,7 +23,6 @@ input::-webkit-input-speech-button {
 .footer {
     background: #2c3e50;
     padding: 50px 15px;
-    position: absolute;
     width: 100%;
     bottom:0;
 }
@@ -40,7 +39,7 @@ input::-webkit-input-speech-button {
     top: 15px;
     cursor: pointer;
     text-transform: uppercase;
-    z-index: 100;
+    z-index: 99;
     transform: translateX(0);
     transition: all 0.4s;
 }
@@ -63,7 +62,6 @@ input::-webkit-input-speech-button {
     top: 0;
     bottom: 0;
     opacity:0;
-    z-index:99;
     transition: all 0.4s;
 }
 .main-navication a {
