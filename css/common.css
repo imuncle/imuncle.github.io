@@ -1,5 +1,6 @@
 body {
     font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif; /*使用无衬线字体*/
+    min-height: 100vh;
 }
 a, img {
     -webkit-touch-callout: none; /*禁止长按链接与图片弹出菜单*/
@@ -23,6 +24,9 @@ input::-webkit-input-speech-button {
 .footer {
     background: #2c3e50;
     padding: 50px 15px;
+    position: absolute;
+    width: 100%;
+    bottom:0;
 }
 .navi-button {
     font-size: .8rem;
@@ -37,7 +41,7 @@ input::-webkit-input-speech-button {
     top: 15px;
     cursor: pointer;
     text-transform: uppercase;
-    z-index: 99;
+    z-index: 98;
     transform: translateX(0);
     transition: all 0.4s;
 }
@@ -59,6 +63,7 @@ input::-webkit-input-speech-button {
     top: 0;
     bottom: 0;
     opacity:0;
+    z-index:99;
     transition: all 0.4s;
 }
 .main-navication a {

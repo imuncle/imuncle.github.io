@@ -318,18 +318,22 @@ function getIssuePerpage(request_url) {
         type:'get',
         url:request_url+'page='+page+'&per_page=10',
         success:function(data) {
-            document.getElementById('issue-list').innerHTML = '<br>';
-            for(var i=0;i<data.length;i++) {
-                var labels_content = '';
-                for(var j=0;j<data[i].labels.length;j++) {
-                    labels_content += '<li><a href=issue_per_label.html?label='+data[i].labels[j].name+'>'+data[i].labels[j].name+'</a></li>';
+            if(data.length == 0) {
+                document.getElementById('issue-list').innerHTML = '这个人很勤快但这里什么都还没写~';
+            }else {
+                document.getElementById('issue-list').innerHTML = '';
+                for(var i=0;i<data.length;i++) {
+                    var labels_content = '';
+                    for(var j=0;j<data[i].labels.length;j++) {
+                        labels_content += '<li><a href=issue_per_label.html?label='+data[i].labels[j].name+'>'+data[i].labels[j].name+'</a></li>';
+                    }
+                    data[i].body = data[i].body.replace(/<(?!img).*?>/g, "");
+                    data[i].created_at = utc2localTime(data[i].created_at);
+                    document.getElementById('issue-list').innerHTML += '<li><p class="date">'+data[i].created_at+
+                    '</p><h4 class="title"><a href="content.html?id='+data[i].number+'">'+data[i].title+
+                    '</a></h4><div class="excerpt"><p class="issue">'+data[i].body+'</p></div>'+
+                    '<ul class="meta"><li>'+data[i].user.login+'</li>'+labels_content+'</ul></li>';
                 }
-                data[i].body = data[i].body.replace(/<(?!img).*?>/g, "");
-                data[i].created_at = utc2localTime(data[i].created_at);
-                document.getElementById('issue-list').innerHTML += '<li><p class="date">'+data[i].created_at+
-                '</p><h4 class="title"><a href="content.html?id='+data[i].number+'">'+data[i].title+
-                '</a></h4><div class="excerpt"><p class="issue">'+data[i].body+'</p></div>'+
-                '<ul class="meta"><li>'+data[i].user.login+'</li>'+labels_content+'</ul></li>';
             }
         }
     });
