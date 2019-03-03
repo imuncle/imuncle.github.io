@@ -54,7 +54,7 @@ input::-webkit-input-speech-button {
 }
 .main-navication {
     margin: 0;
-    padding: 100px 0 0;
+    padding: 50px 0 0;
     background: #2c3e50;
     width: 150px;
     position: fixed;
