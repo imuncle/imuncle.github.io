@@ -27,9 +27,8 @@ issue_per_label.html
 |__home.css
 + js
 |__jquery.min.js
-|__menu.js
 |__typed.js
-|__issue_comment.js
+|__gitblog.js
 ```
 
 ~~后续打算把该博客模板整理出来，单独建个repository。~~
