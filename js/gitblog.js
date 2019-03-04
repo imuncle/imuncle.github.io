@@ -131,8 +131,9 @@ function issueListPage() {
     var issue_url;
     var issue_perpage_url;
     if(label == undefined) {
-        issue_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues';
+        issue_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo;
         issue_perpage_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues?';
+        getPageNum(issue_url);
     }else {
         issue_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues?labels='+label;
         issue_perpage_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues?labels='+label+'&';
@@ -147,8 +148,9 @@ function issueListPage() {
                 document.getElementById('instruction').innerHTML = data.description;
             }
         });
+        getLabelPageNum(issue_url);
     }
-    getPageNum(issue_url);
+    
     getIssuePerpage(issue_perpage_url);
 }
 
@@ -348,7 +350,7 @@ function utc2localTime(time) {
     return unixTimestamp.toLocaleString();
 }
 
-function getPageNum(request_url) {
+function getLabelPageNum(request_url) {
     // 获取issue数量，确定分页数目
     $.ajax({
         type:'get',
@@ -372,6 +374,33 @@ function getPageNum(request_url) {
                 document.getElementById('pages').innerHTML += '<li id="next_page"><a href="javascript:nextPage()">»</a></li>';
                 turnToPage(page, pages);
                 
+            }
+        }
+    });
+}
+
+function getPageNum(request_url) {
+    $.ajax({
+        type:'get',
+        url:request_url,
+        success:function(data) {
+            issue_num = data.open_issues_count;
+            var pages = 1;
+            if(issue_num > 10) {
+                pages = Math.ceil(issue_num/10);
+                $('#pages').css('display','inline-block');
+                document.getElementById('pages').innerHTML = '<li id="last_page"><a href="javascript:lastPage()">«</a></li>';
+                for(var i=1;i<=pages;i++) {
+                    if(getUrlParam('label')!=undefined) {
+                        document.getElementById('pages').innerHTML += '<li><a id="page'+i+'" href="?label='+getUrlParam('label')+'&page='+i+'">'+i+'</a></li>'
+                    }else if(getUrlParam('id')!=undefined) {
+                        document.getElementById('pages').innerHTML += '<li><a id="page'+i+'" href="?id='+getUrlParam('id')+'&page='+i+'">'+i+'</a></li>'
+                    }else {
+                        document.getElementById('pages').innerHTML += '<li><a id="page'+i+'" href="?page='+i+'">'+i+'</a></li>';
+                    }
+                }
+                document.getElementById('pages').innerHTML += '<li id="next_page"><a href="javascript:nextPage()">»</a></li>';
+                turnToPage(page, pages); 
             }
         }
     });
