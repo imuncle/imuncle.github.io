@@ -67,12 +67,12 @@ $('.Totop').click(function() {
 function WeChart(command)
 {
   if(command == "show") {
-    $('#wechart-qrcode').css('display','block');
+    $('#wechart-qrcode').css('z-index','99');
     $('#wechart-qrcode').css("opacity","1");
     $('#wechart-qrcode').css("transform","translateY(0)");
   } else if(command == "hide")
   {
-    $('#wechart-qrcode').css('display','none');
+    $('#wechart-qrcode').css('z-index','-1');
     $('#wechart-qrcode').css("opacity","0");
     $('#wechart-qrcode').css("transform","translateY(-20px)");
   }
