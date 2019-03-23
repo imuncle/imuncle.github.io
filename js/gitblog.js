@@ -48,6 +48,8 @@ $('.navi-button').click(function(){
         $('.main-navication span').css("transform","translateX(-10px)");
         $('.navi-button').css("transform","translateX(-150px)");
         $('.Totop').css("transform","translateX(-150px)");
+        $('.search').css("transform","translateX(-150px)");
+        $('.search-input').css("transform","translateX(-150px)");
     }else {
         $('.main').css("transform","translateX(0)");
         $('.main-navication span').css("opacity","0");
@@ -55,6 +57,8 @@ $('.navi-button').click(function(){
         $('.main-navication span').css("transform","translateX(-50px)");
         $('.navi-button').css("transform","translateX(0px)");
         $('.Totop').css("transform","translateX(0px)");
+        $('.search').css("transform","translateX(0px)");
+        $('.search-input').css("transform","translateX(0px)");
     }
 });
 
@@ -63,6 +67,26 @@ $('.Totop').click(function() {
         { scrollTop: '0px' }, 600
     );
 });
+
+$('.search').click(function() {
+    $(".search-input").css('z-index',99);
+    $(".search-input").css("width",'300px');
+    $(".search-input").focus();
+});
+
+function searchOnblur(){
+    if($('.search-input').val() == "")
+    {
+        $(".search-input").css("width",'42px');
+        $(".search-input").css("z-index",-1);
+    }
+}
+
+$('.search-input').bind('keypress', function (event) { 
+    if (event.keyCode == "13" && $('.search-input').val() != "") {
+        window.location.href = 'issue_per_label.html?q='+$('.search-input').val();
+    }
+})
 
 function WeChart(command)
 {
@@ -131,9 +155,24 @@ function issueListPage() {
     var issue_url;
     var issue_perpage_url;
     if(label == undefined) {
-        issue_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo;
-        issue_perpage_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues?';
-        getPageNum(issue_url);
+        var search = getUrlParam('q');
+        if(search == undefined)
+        {
+            issue_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo;
+            issue_perpage_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues?';
+            getPageNum(issue_url);
+        }else {
+            issue_perpage_url = 'https://api.github.com/search/issues?q='+search+' author:'+config.name+'+in:title,body&';
+            search = encodeURI(search);
+            $.ajax({
+                type: 'get',
+                url: 'https://api.github.com/search/issues?q='+search+' author:'+config.name+'+in:title,body',
+                success:function(data) {
+                    pages = Math.ceil(data.total_count/10);
+                    turnToPage(page, pages);
+                }
+            });
+        }
     }else {
         issue_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues?labels='+label;
         issue_perpage_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues?labels='+label+'&';
@@ -267,7 +306,7 @@ function logout() {
 function getUrlParam(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
     var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-    if (r != null) return unescape(r[2]); return null; //返回参数值
+    if (r != null) return decodeURI(r[2]); return null; //返回参数值
 }
 
 function comment() {
@@ -319,26 +358,57 @@ function GetMenu() {
 
 // 获取每一页的issue内容
 function getIssuePerpage(request_url) {
+    console.log(request_url);
+
+    //replaceAll替换函数
+    String.prototype.replaceAll = function(a,b){
+        return this.replace(new RegExp(a,'gm'),b);
+    }
     $.ajax({
         type:'get',
         url:request_url+'page='+page+'&per_page=10',
         success:function(data) {
-            if(data.length == 0) {
-                document.getElementById('issue-list').innerHTML = '这个人很勤快但这里什么都还没写~';
-                $('.footer').css('position','absolute');
-            }else {
-                document.getElementById('issue-list').innerHTML = '';
-                for(var i=0;i<data.length;i++) {
-                    var labels_content = '';
-                    for(var j=0;j<data[i].labels.length;j++) {
-                        labels_content += '<li><a href=issue_per_label.html?label='+data[i].labels[j].name+'>'+data[i].labels[j].name+'</a></li>';
+            var search = getUrlParam('q');
+            if(search == undefined)
+            {
+                if(data.length == 0) {
+                    document.getElementById('issue-list').innerHTML = '这个人很勤快但这里什么都还没写~';
+                    $('.footer').css('position','absolute');
+                }else {
+                    document.getElementById('issue-list').innerHTML = '';
+                    for(var i=0;i<data.length;i++) {
+                        var labels_content = '';
+                        for(var j=0;j<data[i].labels.length;j++) {
+                            labels_content += '<li><a href=issue_per_label.html?label='+data[i].labels[j].name+'>'+data[i].labels[j].name+'</a></li>';
+                        }
+                        data[i].body = data[i].body.replace(/<(?!img).*?>/g, "");
+                        data[i].created_at = utc2localTime(data[i].created_at);
+                        document.getElementById('issue-list').innerHTML += '<li><p class="date">'+data[i].created_at+
+                        '</p><h4 class="title"><a href="content.html?id='+data[i].number+'">'+data[i].title+
+                        '</a></h4><div class="excerpt"><p class="issue">'+data[i].body+'</p></div>'+
+                        '<ul class="meta"><li>'+data[i].user.login+'</li>'+labels_content+'</ul></li>';
                     }
-                    data[i].body = data[i].body.replace(/<(?!img).*?>/g, "");
-                    data[i].created_at = utc2localTime(data[i].created_at);
-                    document.getElementById('issue-list').innerHTML += '<li><p class="date">'+data[i].created_at+
-                    '</p><h4 class="title"><a href="content.html?id='+data[i].number+'">'+data[i].title+
-                    '</a></h4><div class="excerpt"><p class="issue">'+data[i].body+'</p></div>'+
-                    '<ul class="meta"><li>'+data[i].user.login+'</li>'+labels_content+'</ul></li>';
+                }
+            }else {
+                if(data.items.length == 0) {
+                    window.location.href = "404.html"
+                }else {
+                    document.getElementById('issue-list').innerHTML = '';
+                    for(var i=0;i<data.items.length;i++) {
+                        var labels_content = '';
+                        for(var j=0;j<data.items[i].labels.length;j++) {
+                            labels_content += '<li><a href=issue_per_label.html?label='+data.items[i].labels[j].name+'>'+data.items[i].labels[j].name+'</a></li>';
+                        }
+                        data.items[i].body = data.items[i].body.replace(/<(?!img).*?>/g, "");
+                        data.items[i].created_at = utc2localTime(data.items[i].created_at);
+                        document.getElementById('issue-list').innerHTML += '<li><p class="date">'+data.items[i].created_at+
+                        '</p><h4 class="title"><a href="content.html?id='+data.items[i].number+'">'+data.items[i].title+
+                        '</a></h4><div class="excerpt"><p class="issue">'+data.items[i].body+'</p></div>'+
+                        '<ul class="meta"><li>'+data.items[i].user.login+'</li>'+labels_content+'</ul></li>';
+                    }
+                    var html = document.getElementById('issue-list').innerHTML;
+                    var newHtml = html.replaceAll(search,'<font style="background-color:yellow;">'+search+'</font>');
+                    document.getElementById('issue-list').innerHTML = newHtml;
                 }
             }
         }
