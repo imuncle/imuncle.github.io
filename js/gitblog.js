@@ -311,6 +311,7 @@ function GetMenu() {
             for(var i=0;i<data.length;i++) {
                 document.getElementById('menu').innerHTML += '<li><a href="issue_per_label.html?label='+data[i].name+'"><span>'+data[i].name+'</span></a></li>';
             }
+            document.getElementById('menu').innerHTML += '<li><a href="content.html?id=41"><span>'+关于我+'</span></a></li>';
         },
     });
     document.getElementById("footer").innerHTML += 'Powered by <a href="https://github.com/imuncle/gitblog" target="_blank" style="color: aquamarine;text-decoration:none;border-bottom: 1px solid #79f8d4;">gitblog</a>';
