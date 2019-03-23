@@ -162,7 +162,7 @@ function issueListPage() {
             issue_perpage_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues?';
             getPageNum(issue_url);
         }else {
-            issue_perpage_url = 'https://api.github.com/search/issues?q='+search+' author:'+config.name+'+in:title,body&';
+            issue_perpage_url = 'https://api.github.com/search/issues?q='+search+' author:'+config.name+'+in:title,body is:open&';
             search = encodeURI(search);
             $.ajax({
                 type: 'get',
