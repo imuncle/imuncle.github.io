@@ -162,11 +162,11 @@ function issueListPage() {
             issue_perpage_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues?';
             getPageNum(issue_url);
         }else {
-            issue_perpage_url = 'https://api.github.com/search/issues?q='+search+' author:'+config.name+'+in:title,body+is:open+is:public+sort:interactions&';
+            issue_perpage_url = 'https://api.github.com/search/issues?q='+search+' author:'+config.name+'+in:title,body+is:open+is:public&';
             search = encodeURI(search);
             $.ajax({
                 type: 'get',
-                url: 'https://api.github.com/search/issues?q='+search+' author:'+config.name+'+in:title,body+is:open+is:public+sort:interactions',
+                url: 'https://api.github.com/search/issues?q='+search+' author:'+config.name+'+in:title,body+is:open+is:public',
                 success:function(data) {
                     pages = Math.ceil(data.total_count/10);
                     turnToPage(page, pages);
