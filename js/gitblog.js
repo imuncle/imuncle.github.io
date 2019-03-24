@@ -162,11 +162,11 @@ function issueListPage() {
             issue_perpage_url = 'https://api.github.com/repos/'+config.name+'/'+config.repo+'/issues?';
             getPageNum(issue_url);
         }else {
-            issue_perpage_url = 'https://api.github.com/search/issues?q='+search+' author:'+config.name+'+in:title,body is:open&';
+            issue_perpage_url = 'https://api.github.com/search/issues?q='+search+' author:'+config.name+'+in:title,body+is:open+is:public+sort:interactions&';
             search = encodeURI(search);
             $.ajax({
                 type: 'get',
-                url: 'https://api.github.com/search/issues?q='+search+' author:'+config.name+'+in:title,body',
+                url: 'https://api.github.com/search/issues?q='+search+' author:'+config.name+'+in:title,body+is:open+is:public+sort:interactions',
                 success:function(data) {
                     pages = Math.ceil(data.total_count/10);
                     turnToPage(page, pages);
@@ -407,8 +407,11 @@ function getIssuePerpage(request_url) {
                         '<ul class="meta"><li>'+data.items[i].user.login+'</li>'+labels_content+'</ul></li>';
                     }
                     var html = document.getElementById('issue-list').innerHTML;
-                    var newHtml = html.replaceAll(search,'<font style="background-color:yellow;">'+search+'</font>');
-                    document.getElementById('issue-list').innerHTML = newHtml;
+                    search = search.replace(/\s*/g,"");
+                    for(var i=0;i<search.length;i++) {
+                        var newHtml = html.replaceAll(search[i],'<font style="background-color:yellow;">'+search[i]+'</font>');
+                        document.getElementById('issue-list').innerHTML = newHtml;
+                    }
                 }
             }
         }
