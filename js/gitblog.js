@@ -358,8 +358,6 @@ function GetMenu() {
 
 // 获取每一页的issue内容
 function getIssuePerpage(request_url) {
-    console.log(request_url);
-
     //replaceAll替换函数
     String.prototype.replaceAll = function(a,b){
         return this.replace(new RegExp(a,'gm'),b);
@@ -381,7 +379,7 @@ function getIssuePerpage(request_url) {
                         for(var j=0;j<data[i].labels.length;j++) {
                             labels_content += '<li><a href=issue_per_label.html?label='+data[i].labels[j].name+'>'+data[i].labels[j].name+'</a></li>';
                         }
-                        data[i].body = data[i].body.replace(/<(?!img).*?>/g, "");
+                        data[i].body = data[i].body.replace(/<.*?>/g, "");
                         data[i].created_at = utc2localTime(data[i].created_at);
                         document.getElementById('issue-list').innerHTML += '<li><p class="date">'+data[i].created_at+
                         '</p><h4 class="title"><a href="content.html?id='+data[i].number+'">'+data[i].title+
