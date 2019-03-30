@@ -404,7 +404,7 @@ function getIssuePerpage(request_url) {
                         '</a></h4><div class="excerpt"><p class="issue">'+data.items[i].body+'</p></div>'+
                         '<ul class="meta"><li>'+data.items[i].user.login+'</li>'+labels_content+'</ul></li>';
                     }
-                    search = search.replace(/\s*/g,"");
+                    search = search.split(" ");
                     for(var i=0;i<search.length;i++) {
                         var html = document.getElementById('issue-list').innerHTML;
                         var newHtml = html.replaceAll(search[i],'<font style="background-color:yellow;">'+search[i]+'</font>');
