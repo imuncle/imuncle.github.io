@@ -9,17 +9,30 @@
         var r = window.location.search.substr(1).match(reg);  //匹配目标参数
         if (r != null) return decodeURI(r[2]); return null; //返回参数值
     }
-    var repos = getUrlParam('repos');
+    var repo = getUrlParam('repo');
     var path = getUrlParam('path');
-    if(repos == undefined || path == undefined){
+    var doc = getUrlParam('doc');
+    var js_content;
+    if(repo == undefined || path == undefined || doc == undefined){
         window.location = '404.html';
     }else{
         $.ajax({
             type: 'get',
-            url: 'https://api.github.com/repos/imuncle/'+repos+'/contents/'+path+'.html?ref=master',
+            url: 'https://api.github.com/repos/imuncle/'+repo+'/contents/'+path+'/'+doc+'?ref=master',
             success:function(data) {
                 var base = new Base64();
-                document.write(base.decode(data.content));
+                var html_content = base.decode(data.content);
+                var js = html_content.match(/<script .*?src=\"(.+?)\"/)[1];
+                document.write(html_content.replace(/<script.*?>.*?<\/script>/ig, ''));
+                $.ajax({
+                    type:'get',
+                    url:'https://api.github.com/repos/imuncle/'+repo+'/contents/'+path+'/'+js+'?ref=master',
+                    success:function(data){
+                        var base = new Base64();
+                        js_content = base.decode(data.content);
+                        eval(js_content);
+                    }
+                });
             }
         });
     }
