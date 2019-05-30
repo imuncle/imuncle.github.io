@@ -9,6 +9,7 @@ var config = {
     friends : {
         Bo : 'https://greedbob.github.io',
         Qmaker : 'https://hitszqmaker.github.io',
+        "Keith Tang's Blog." :  'https://tangkaichuan.cn/'
     },
 };
 
