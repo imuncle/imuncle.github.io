@@ -3,9 +3,13 @@
 
 本小站目前有以下板块：
 
-- [web技术](https://imuncle.github.io?label=web)
-- [RM比赛](https://imuncle.github.io?label=RM)
-- [其他](https://imuncle.github.io?label=other)
+- [机器学习](https://imuncle.github.io/issue_per_label.html?label=AI)
+- [小项目](https://imuncle.github.io/issue_per_label.html?label=Project)
+- [web技术](https://imuncle.github.io/issue_per_label.html?label=web)
+- [RM比赛](https://imuncle.github.io/issue_per_label.html?label=RM)
+- [ROS开发](https://imuncle.github.io/issue_per_label.html?label=ROS)
+- [工具](https://imuncle.github.io/issue_per_label.html?label=tools)
+- [其他](https://imuncle.github.io/issue_per_label.html?label=other)
 
 小站网址[https://imuncle.github.io](https://imuncle.github.io)
 
