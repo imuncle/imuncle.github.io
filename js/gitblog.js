@@ -171,7 +171,7 @@ var gitblog = function (options) {
                 menu_friend.innerHTML += '<li><a href=' + config.friends[name] + ' target="_blank"><span>' + name + '</span></a></li>';
             }
         }
-        $("#search_input").attr("onblur","blog.menu.searchOnblur()");
+        $(".search-input").attr("onblur","blog.menu.searchOnblur()");
     }
 
     var Footer = function () {
