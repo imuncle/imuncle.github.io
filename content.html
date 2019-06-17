@@ -12,7 +12,7 @@
   </head>
   <body>
     <label class="navi-button">MENU</label>
-    <input type="text" class="search-input" placeholder="回车搜索" onblur="searchOnblur()">
+    <input type="text" class="search-input" placeholder="回车搜索">
     <img src="images/search.svg" class="search">
     <ul class="main-navication">
       <ul id="menu"></ul>
@@ -45,8 +45,8 @@
               <div class="gitment-editor-main">
                 <div class="gitment-editor-header">
                   <nav class="gitment-editor-tabs">
-                    <button class="gitment-editor-tab gitment-selected" onclick="editComment()" id="editComment">评论</button>
-                    <button class="gitment-editor-tab" onclick="preview()" id="preview">预览</button>
+                    <button class="gitment-editor-tab gitment-selected" id="editComment">评论</button>
+                    <button class="gitment-editor-tab" id="preview">预览</button>
                   </nav>
                   <div class="gitment-editor-login" id='login'></div>
                 </div>
@@ -63,18 +63,14 @@
                 <a class="gitment-editor-footer-tip" href="https://guides.github.com/features/mastering-markdown/" target="_blank">
                   支持 Markdown 语法
                 </a>
-                <button class="gitment-editor-submit" disabled onclick="comment()">发送</button>
+                <button class="gitment-editor-submit" disabled>发送</button>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="footer" style="text-align: center">
-        <div>
-          <a href="https://github.com/imuncle" title="Github" target="_blank"><img src="images/github.svg" style="width:50px;margin-left:10px;margin-right:10px"></a>
-          <img src="images/wechart.svg" title="WeChart" onmouseover="WeChart('show')" onmouseout="WeChart('hide')" style="width:50px;cursor:pointer;margin-left:10px;margin-right:10px">
-          <img id="wechart-qrcode" src="images/wechart-qrcode.jpg" style="width:130px;position:absolute;left:calc(50% - 28px);bottom:180px;transform:translateY(-20px);opacity:0;z-index:-1;transition: all .3s;box-shadow: 0 0 5px #95a5a6;">
-        </div>
+        <div id='icon' style="display: flex;justify-content: center;padding: 0;align-items: center"></div>
         <div id="footer" style="text-align: center;background: #2c3e50;padding-top: 30px;color: white"></div>
       </div>
     </div>
@@ -82,7 +78,4 @@
   </body>
   <script src = "js/jquery.min.js"></script>
   <script src="js/gitblog.js"></script>
-  <script>
-    articlePage();
-  </script>
 </html>
