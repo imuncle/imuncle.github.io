@@ -459,6 +459,7 @@ var gitblog = function (options) {
         if (this.login == true) {
             $.ajax({
                 type: "get",
+                async: false,
                 url: 'https://api.github.com/user?access_token=' + window.localStorage.access_token,
                 success: function (data) {
                     window.localStorage.setItem('user_avatar_url', data.avatar_url);
@@ -563,8 +564,8 @@ var gitblog = function (options) {
                     labels.innerHTML += '<a href="issue_per_label.html?label=' + data.labels[i].name + '"># ' + data.labels[i].name + '</a>';
                 }
                 labels.innerHTML += '<div style="float:right;cursor:pointer" id="'+self.options.id+'"></div>';
-                article.reaction.getNum('issue',self.options.id);
                 article.comments.init();
+                article.reaction.getNum('issue',self.options.id);
             }
         });
     }
