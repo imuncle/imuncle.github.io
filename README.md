@@ -14,7 +14,7 @@
 小站网址[https://imuncle.github.io](https://imuncle.github.io)
 
 ## 小站架构
-本站基于GitHub的issue系统搭建，评论功能参考了开源项目[Gitment](https://github.com/imsun/gitment)，利用了该项目的css样式，并简化了JavaScript部分的逻辑代码（*不支持点赞等小功能*）
+本站基于GitHub的issue系统搭建，评论功能参考了开源项目[Gitment](https://github.com/imsun/gitment)，借用了该项目的css样式。
 
 文章浏览功能参考GitHub API自己写了一个，发布文章直接在GitHub issue界面进行。
 
