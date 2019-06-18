@@ -317,7 +317,7 @@ var gitblog = function (options) {
             success: function () {
                 reaction.num += 1;
                 reaction.isLike = true;
-                reaction.show(id);
+                reaction.show(type, id);
             }
         });
     }
