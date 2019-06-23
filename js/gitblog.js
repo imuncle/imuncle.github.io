@@ -1,40 +1,4 @@
-var config = {
-    name: "imuncle",
-    repo: "imuncle.github.io",
-    client_id: "22aaa014a31e292cfe21",
-    client_secret: "7ba1b3718986fba62fdceb47c0a2f23a1adf0c1b",
-    title: "大叔的小站",
-    instruction: "往事随他去，人间不值得",
-    server_link: 'http://119.23.8.25/gh-oauth-server.php',
-    pin_links: {
-        '关于我': '41'
-    },
-    friends: {
-        Bo: 'https://greedbob.github.io',
-        Qmaker: 'https://hitszqmaker.github.io',
-        "KT's Blog": 'https://tangkaichuan.cn/'
-    },
-    icons: {
-        Github: {
-            icon_src: 'images/github.svg',
-            href: 'https://github.com/imuncle',
-            hidden_img: null,
-            width: 0
-        },
-        Wechart: {
-            icon_src: 'images/wechart.svg',
-            href: null,
-            hidden_img: 'images/wechart-qrcode.jpg',
-            width: 130
-        },
-    }
-};
-
-String.prototype.replaceAll = function(a, b) {
-    return this.replace(new RegExp(a, 'gm'), b);
-}
-
-var gitblog = function(options) {
+var gitblog = function(config) {
     var self = this;
 
     self.getUrlParam = function(name) {
@@ -54,7 +18,7 @@ var gitblog = function(options) {
         redirect_url: null,
     }
 
-    self.set = function(options) {
+    self.set = function() {
         if (self.getUrlParam('id') != undefined) {
             self.options.id = parseInt(self.getUrlParam('id'));
         }
@@ -80,20 +44,18 @@ var gitblog = function(options) {
         if (self.options.code != null && self.options.redirect_url != null) {
             window.location.href = config.server_link + "?code=" + self.options.code + "&redirect_url=" + self.options.redirect_url + "&client_id=" + config.client_id + "&client_secret=" + config.client_secret;
         }
-
-        for (var i in options) {
-            if (self.options[i] != undefined) {
-                self.options[i] = options[i];
-            }
-        }
     }
 
-    self.set(options);
+    self.set();
 
     self.utc2localTime = function(time) {
         var time_string_utc_epoch = Date.parse(time);
         var unixTimestamp = new Date(time_string_utc_epoch);
         return unixTimestamp.toLocaleString();
+    }
+
+    String.prototype.replaceAll = function(a, b) {
+        return this.replace(new RegExp(a, 'gm'), b);
     }
 
     var Info = function() {
@@ -776,8 +738,15 @@ var gitblog = function(options) {
         self.button = new Buttons();
         self.button.init();
     }
-
-    self.init();
 }
 
-var blog = new gitblog();
+$.ajax({
+    type: 'get',
+    headers: {
+        Accept: 'application/json',
+    },
+    url: 'config.json',
+    success: function(data) {
+        new gitblog(data).init();
+    }
+});
