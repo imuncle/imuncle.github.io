@@ -18,12 +18,13 @@
 
 文章浏览功能参考GitHub API自己写了一个，发布文章直接在GitHub issue界面进行。
 
-整个博客架构非常简单，核心内容只有三个HTML文件和一个JavaScript文件。
+整个博客架构非常简单，核心内容只有四个HTML文件和一个JavaScript文件（gitblog.js）。
 
 ```
 index.html
 content.html
 issue_per_label.html
+404.html
 + css
 |__bootstrap.min.css
 |__common.css
