@@ -26,6 +26,12 @@
             "href": null,
             "hidden_img": "images/wechart-qrcode.jpg",
             "width": 130
+        },
+        "联系作者": {
+            "icon_src": "images/QQ.svg",
+            "href": "tencent://message/?uin=1378006772",
+            "hidden_img": null,
+            "width": 0
         }
     }
 }
