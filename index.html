@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/home.css">
   </head>
-  <body>
+  <body onload="InitLive2D()">
     <label class="navi-button">MENU</label>
     <input type="text" class="search-input" placeholder="回车搜索">
     <img src="images/search.svg" class="search">
@@ -47,10 +47,13 @@
       </div>
     </div>
     <img class="Totop" href="javascript:;" src="images/totop.png">
+    <canvas class="live2d hidden-xs hidden-sm" id="live2d" width="220" height="200"></canvas>
   </body>
   <script src = "js/jquery.min.js"></script>
   <script src = "js/typed.js"></script>
   <script src = "js/gitblog.js"></script>
+  <script src = "js/LAppDefine.js"></script>
+  <script src = "js/live2d.min.js"></script>
   <script>
     $(function(){ 
     　$('.head').css("opacity","1");

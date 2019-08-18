@@ -134,3 +134,8 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
     top: 57px;
     z-index: -1;
 }
+.live2d {
+    position: fixed;
+    bottom : 10px;
+    left : 0;
+}
