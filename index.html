@@ -4,14 +4,15 @@
     <meta name="google-site-verification" content="4T3DT1L7LoqmCrr4QoTb1PBVO4TNI0BHrjIWNOddJYE" />
     <title></title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
-    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="大叔的个人小站，不定期更新我的学习心得，以及相关教程。">
     <link rel="stylesheet" href="css/common.css">
     <link rel="icon" href="images/avatar.jpg">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/home.css">
   </head>
-  <body onload="InitLive2D()">
+  <body>
     <label class="navi-button">MENU</label>
     <input type="text" class="search-input" placeholder="回车搜索">
     <img src="images/search.svg" class="search">
@@ -49,12 +50,13 @@
     <img class="Totop" href="javascript:;" src="images/totop.png">
     <canvas class="live2d hidden-xs hidden-sm" id="live2d" width="220" height="200"></canvas>
   </body>
+  <script src = "js/LAppDefine.js"></script>
+  <script src = "js/live2d.min.js"></script>
   <script src = "js/jquery.min.js"></script>
   <script src = "js/typed.js"></script>
   <script src = "js/gitblog.js"></script>
-  <script src = "js/LAppDefine.js"></script>
-  <script src = "js/live2d.min.js"></script>
   <script>
+    if(window.innerHeight >= 800) InitLive2D();
     $(function(){ 
     　$('.head').css("opacity","1");
       $('.head').css("transform","translateY(0)");
