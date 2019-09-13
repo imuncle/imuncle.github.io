@@ -9,6 +9,7 @@
 - [RM比赛](https://imuncle.github.io/issue_per_label.html?label=RM)
 - [ROS开发](https://imuncle.github.io/issue_per_label.html?label=ROS)
 - [工具](https://imuncle.github.io/issue_per_label.html?label=tools)
+- [灵感想法](https://imuncle.github.io/timeline)
 - [其他](https://imuncle.github.io/issue_per_label.html?label=other)
 
 小站网址[https://imuncle.github.io](https://imuncle.github.io)
