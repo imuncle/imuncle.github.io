@@ -90,6 +90,7 @@ var gitblog = function(config) {
             }
         },
         show: function() {
+            var menu = this;
             for(var name in config.menu) {
                 document.getElementById("menu").innerHTML += '<li><a href=' + config.menu[name] + '><span>' + name + '</span></a></li>';
             }
@@ -102,7 +103,7 @@ var gitblog = function(config) {
             }
             $(".search-input").on("blur",
             function() {
-                this.searchOnblur();
+                menu.searchOnblur();
             });
         }
     }
