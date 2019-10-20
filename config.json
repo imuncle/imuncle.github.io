@@ -6,9 +6,17 @@
     "title": "大叔的小站",
     "instruction": "往事随他去，人间不值得",
     "server_link": "http://119.23.8.25/gh-oauth-server.php",
-    "pin_links": {
+    "menu": {
+        "首页":"./",
+        "机器学习":"issue_per_label.html?label=AI",
+        "小项目":"issue_per_label.html?label=Project",
+        "RM比赛":"issue_per_label.html?label=RM",
+        "ROS学习":"issue_per_label.html?label=ROS",
+        "小工具":"issue_per_label.html?label=tools",
+        "网页开发":"issue_per_label.html?label=web",
+        "其他":"issue_per_label.html?label=other",
         "灵感想法":"https://imuncle.github.io/timeline",
-        "关于我": "41"
+        "关于我": "content.html?id=41"
     },
     "friends": {
         "Bo": "https://greedbob.github.io",

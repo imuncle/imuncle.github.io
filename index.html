@@ -51,12 +51,29 @@
     <canvas class="live2d hidden-xs hidden-sm" id="live2d" width="220" height="200"></canvas>
   </body>
   <script src = "js/LAppDefine.js"></script>
-  <script src = "js/live2d.min.js"></script>
+  <script src = "js/live2d.js"></script>
   <script src = "js/jquery.min.js"></script>
   <script src = "js/typed.js"></script>
   <script src = "js/gitblog.js"></script>
   <script>
-    if(window.innerHeight >= 800) InitLive2D();
+    function IsPC() {
+      var userAgentInfo = navigator.userAgent;
+      var Agents = ["Android", "iPhone",
+        "SymbianOS", "Windows Phone",
+        "iPad", "iPod"];
+      var flag = true;
+      for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+            flag = false;
+            break;
+        }
+      }
+      return flag;
+    }
+    if(IsPC())
+    {
+        loadlive2d(LAppDefine.CANVAS_ID, LAppDefine.MODELS[0][0]);
+    }
     $(function(){ 
     　$('.head').css("opacity","1");
       $('.head').css("transform","translateY(0)");

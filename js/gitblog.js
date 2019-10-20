@@ -83,27 +83,6 @@ var gitblog = function(config) {
     }
 
     Menu.prototype = {
-        getItem: function() {
-            $.ajax({
-                type: 'get',
-                url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/labels',
-                success: function(data) {
-                    for (var i in data) {
-                        document.getElementById('menu').innerHTML += '<li><a href="issue_per_label.html?label=' + data[i].name + '"><span>' + data[i].name + '</span></a></li>';
-                    }
-                    for (var name in config.pin_links) {
-                        var targetUrl;
-                        //Check whether it is an external URL, if not, link to the corresponding page by issue_id
-                        if (config.pin_links[name].indexOf("http") == -1) {
-                            targetUrl = "content.html?id=" + config.pin_links[name];
-                        } else if (config.pin_links[name].indexOf("http") != -1) {
-                            targetUrl = config.pin_links[name];
-                        }
-                        document.getElementById('menu').innerHTML += '<li><a href="' + targetUrl + '"><span>' + name + '</span></a></li>';
-                    }
-                },
-            });
-        },
         searchOnblur: function() {
             if ($('.search-input').val() == "") {
                 $(".search-input").css("width", '42px');
@@ -111,9 +90,9 @@ var gitblog = function(config) {
             }
         },
         show: function() {
-            var menu = this;
-            menu.getItem();
-            document.getElementById('menu').innerHTML += '<li><a href="./"><span>首页</span></a></li>';
+            for(var name in config.menu) {
+                document.getElementById("menu").innerHTML += '<li><a href=' + config.menu[name] + '><span>' + name + '</span></a></li>';
+            }
             if (Object.keys(config.friends).length != 0) {
                 var menu_friend = document.getElementById("friends");
                 menu_friend.innerHTML = '<li><text style="font-zise:14px"><span style="color: white;transform:translateX(4px)">友链：</span></text></li>';
@@ -123,7 +102,7 @@ var gitblog = function(config) {
             }
             $(".search-input").on("blur",
             function() {
-                menu.searchOnblur();
+                this.searchOnblur();
             });
         }
     }
