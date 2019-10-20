@@ -492,7 +492,7 @@ var gitblog = function(config) {
                     }
                 });
             } else {
-                avatar.innerHTML = '<a class="gitment-editor-avatar" id="gitment-avatar" title="login with GitHub">' + '<img src="images/gitment-github-icon.svg" class="gitment-github-icon">' + '</a></div>';
+                avatar.innerHTML = '<a class="gitment-editor-avatar" id="gitment-avatar" title="login with GitHub">' + '<img src="images/gitment-github-icon.svg" class="gitment-github-icon" style="width:44px">' + '</a></div>';
                 document.getElementById('gitment-avatar').onclick = function() {
                     comment.log();
                 }
@@ -595,6 +595,17 @@ var gitblog = function(config) {
     }
 
     Issue.prototype = {
+        getTags: function() {
+            $.ajax({
+                type: 'get',
+                url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/labels',
+                success: function(data) {
+                    for (var i in data) {
+                        document.getElementById('tags').innerHTML += '<a href="issue_per_label.html?label=' + data[i].name + '">' + data[i].name + '</a>';
+                    }
+                },
+            });
+        },
         addItem: function(data) {
             document.getElementById('issue-list').innerHTML = '';
             for (var i in data) {
@@ -658,6 +669,7 @@ var gitblog = function(config) {
             }
             this.page.getNum(this.issue_url);
             this.show(this.issue_perpage_url);
+            this.getTags();
         },
         search: function(search) {
             search = encodeURI(search);
