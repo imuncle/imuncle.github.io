@@ -15,8 +15,7 @@
         "小工具":"issue_per_label.html?label=tools",
         "网页开发":"issue_per_label.html?label=web",
         "其他":"issue_per_label.html?label=other",
-        "灵感想法":"https://imuncle.github.io/timeline",
-        "关于我": "content.html?id=41"
+        "灵感想法":"https://imuncle.github.io/timeline"
     },
     "friends": {
         "Bo": "https://greedbob.github.io",

@@ -96,3 +96,9 @@ a {
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
 }
+
+.right_title {
+  cursor: pointer;
+  color: #808080;
+  text-decoration: none;
+}
