@@ -43,7 +43,7 @@ imuncle.github.io
 │   ├── live2d.js               # Live2d驱动程序
 │   └── LAppDefine.js           # Live2d配置文件
 ├── model/22                    # Live2d模型
-├── README.md
+└── README.md
 ```
 
 小站架构已开源，可用于自己搭建博客，详见[gitblog](https://github.com/imuncle/gitblog)。求各位大佬点个Star~
