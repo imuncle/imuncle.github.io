@@ -102,13 +102,13 @@
     {
         loadlive2d(LAppDefine.CANVAS_ID, LAppDefine.MODELS[0][0]);
     }
-    (function(){
+    $(function(){
       setTimeout(function() {
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
       }, 500);
       setInterval(function() {
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
       }, 500);
-    })()
+    });
   </script>
 </html>
